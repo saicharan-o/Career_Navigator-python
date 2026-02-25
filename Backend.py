@@ -304,6 +304,7 @@ def run_navigator():
             print("\n ZERO-TO-END DETAILED ROADMAP:")
             for i, step in enumerate(ROADMAPS[prediction], 1):
                 print(f"{i}. {step}")
+            print("\nThis system provides guidance, not guaranteed predictions. \n".upper())   
         else:
             print("\nRoadmap not found. Check if the 'target' name matches the 'ROADMAPS' key exactly.")        
     
