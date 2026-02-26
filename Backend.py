@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
+import sys
 
 G_P={'O':10,'A+':9,'A':8,'B+':7,'B':6,'C':5,'P':4,'F': 0}
 
@@ -216,7 +217,7 @@ def run_navigator():
     print(branches)
 
     try:
-        b_year=input("\nEnter present studying year: ")
+        b_year=input("\nEnter present studying year: ")   
         print("\nSelect your Branch:")
         for i, b in enumerate(branches,1):
             print(f"{i}. {b}")
@@ -226,6 +227,8 @@ def run_navigator():
     except (ValueError,IndexError):
         print("Invalid Selection.")
         return
+    except EOFError:
+        sys.exit() 
     year_m={
          "1-1":[0],
          "1-2":["Sem 1"],
