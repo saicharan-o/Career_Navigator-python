@@ -1,0 +1,26 @@
+{
+  "name": "career_navigator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "frontend": "cd Frontend && npm start",
+    "backend": "cd Backend && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saicharan-o/Career_Navigator-python.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/saicharan-o/Career_Navigator-python/issues"
+  },
+  "homepage": "https://github.com/saicharan-o/Career_Navigator-python#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
