@@ -191,24 +191,33 @@ function App() {
 
   {results.roadmap && results.roadmap.length > 0 ? (
     <div className="career-grid">
-      {results.roadmap.map((phase, index) => {
-        const lines = phase.split('\n');
-        const title = lines[0]; 
-        const details = lines.slice(1);
+  {results.roadmap.map((phase, index) => {
+    const lines = phase.split('\n');
+    const title = lines[0]; 
+    const details = lines.slice(1);
 
-        return (
-          <div key={index} className="career-card"> 
-            <span className="phase-title">{title}</span>
-            
-            {details.map((line, i) => (
-              <p key={i} className={`roadmap-detail ${line.includes('Milestone:') ? 'milestone-highlight' : ''}`}>
-                {line.trim()}
+    return (
+      <div key={index} className="career-card"> 
+        <span className="phase-title">🚀 {title}</span>
+        
+        <div className="details-box">
+          {details.map((line, i) => {
+            const isMilestone = line.includes('Milestone:');
+            return (
+              <p 
+                key={i} 
+                className={isMilestone ? 'milestone-highlight' : 'roadmap-detail'}
+                style={{ margin: '8px 0', fontSize: '14px', opacity: isMilestone ? 1 : 0.8 }}
+              >
+                {line.trim().replace('- ', '')}
               </p>
-            ))}
-          </div>
-        );
-      })}
-    </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  })}
+</div>
   ) : (
     <p style={{ color: '#dc3545' }}>No roadmap steps were generated.</p>
   )}
