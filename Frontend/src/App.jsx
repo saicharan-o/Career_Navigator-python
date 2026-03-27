@@ -82,165 +82,172 @@ const BRANCH_SYLLABUS = {
 
 function App() {
   const [step, setStep] = useState(1);
-  const [branch, setBranch] = useState("CSE");
-  const [currentYear, setCurrentYear] = useState("1-2"); 
+  const [branch, setBranch] = useState("CSE AI-ML");
+  const [currentYear, setCurrentYear] = useState("4-2"); 
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (grades) => {
-    setLoading(true);
-    try {
-      const response = await axios.post('http://localhost:5000/api/predict', { 
-        branch: branch, 
-        currentYear: currentYear, 
-        grades: grades 
-      });
-      
-      setResults(response.data);
-      setStep(3);
-    } catch (error) {
-      console.error("Connection Error:", error);
-      alert("Backend is not running!");
-    } finally {
-      setLoading(false);
+  // 1. Add a new state at the top of your App function
+const [message, setMessage] = useState("");
+
+// 2. Update the handleGradeSubmit function
+const handleGradeSubmit = async (grades) => {
+    // Check if no grades were entered at all
+    if (Object.keys(grades).length === 0) {
+        setMessage("⚠️ Please enter your grades before generating a roadmap.");
+        return;
     }
-  };
+
+    // Check if any grade was left as "Grade" (empty string)
+    const hasEmptyGrade = Object.values(grades).some(g => g === "");
+    if (hasEmptyGrade) {
+        setMessage("⚠️ Some subjects are missing grades. Please fill them all correctly.");
+        return;
+    }
+
+    setMessage(""); // Clear message if everything is okay
+    setLoading(true);
+
+    try {
+        const response = await axios.post('http://127.0.0.1:5000/predict', {
+            branch: branch,
+            year_sem: currentYear,
+            grades: grades 
+        });
+
+        if (response.data && response.data.roadmap) {
+            setResults(response.data); 
+            setStep(3); 
+        }
+    } catch (error) {
+        setMessage("❌ AI System Offline. Please ensure the Python server is running.");
+    } finally {
+        setLoading(false);
+    }
+};
 
   return (
-  <div className="main-wrapper">
-    <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-      
-      {/* 1. CINEMATIC HEADER - Always visible */}
-      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ color: '#fff', fontSize: '2.5rem', fontWeight: '900', letterSpacing: '2px', margin: '0' }}>
-          CAREER NAVIGATOR
-        </h1>
-        <div style={{ width: '60px', height: '4px', background: '#ff4d4d', margin: '15px auto' }}></div>
-      </div>
-
-      {/* 2. LOADING STATE */}
-      {loading && (
-        <div style={{ textAlign: 'center', padding: '50px' }}>
-          <h2 style={{ color: '#4facfe', animate: 'pulse 2s infinite' }}>
-            🚀 Analyzing NNRG Curriculum... Please wait.
-          </h2>
-        </div>
-      )}
-
-      {/* 3. FORM SECTION (Step 1 & 2) - Now inside a Dark Card */}
-      {!loading && step < 3 && (
-        <div className="career-card" style={{ maxWidth: '600px', margin: '0 auto', cursor: 'default' }}>
-          {step === 1 ? (
-            <div>
-              <h3 style={{ color: '#fff', marginBottom: '25px' }}>Academic Details</h3>
-              
-              <div style={{ marginBottom: '25px' }}>
-                <label style={{ display: 'block', color: '#888', marginBottom: '8px', fontSize: '14px' }}>Present Studying Year-Sem:</label>
-                <select 
-                  value={currentYear} 
-                  onChange={(e) => setCurrentYear(e.target.value)}
-                  style={{ width: '100%', padding: '12px', background: '#1a1a1f', color: '#fff', border: '1px solid #333', borderRadius: '8px' }}
-                >
-                  {Object.keys(YEAR_SEMESTER_MAP).map(y => (
-                    <option key={y} value={y}>{y}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div style={{ marginBottom: '30px' }}>
-                <label style={{ display: 'block', color: '#888', marginBottom: '8px', fontSize: '14px' }}>Select Your Branch:</label>
-                <select 
-                  value={branch} 
-                  onChange={(e) => setBranch(e.target.value)}
-                  style={{ width: '100%', padding: '12px', background: '#1a1a1f', color: '#fff', border: '1px solid #333', borderRadius: '8px' }}
-                >
-                  <option value="CSE">CSE</option>
-                  <option value="CSE IT">CSE IT</option>
-                  <option value="CSE AI-ML">CSE AI-ML</option>
-                  <option value="CSE Data Science">CSE Data Science</option>
-                  <option value="ECE">ECE</option>
-                  <option value="Mechanical">Mechanical</option>
-                  <option value="Civil">Civil</option>
-                </select>
-              </div>
-
-              <button 
-                onClick={() => setStep(2)} 
-                style={{ width: '100%', padding: '15px', background: '#ff4d4d', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' }}
-              >
-                NEXT STEP →
-              </button>
-            </div>
-          ) : (
-            <GradeForm 
-              branch={branch} 
-              currentYear={currentYear} 
-              yearMap={YEAR_SEMESTER_MAP} 
-              syllabusMap={BRANCH_SYLLABUS} 
-              onSubmit={handleSubmit} 
-            />
-          )}
-        </div>
-      )}
-
-      {/* 4. RESULTS SECTION (Step 3) */}
-      {!loading && step === 3 && results && (
-        <div className="analysis-container">
-          
-          <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-            <h2 style={{ color: '#4facfe', textTransform: 'uppercase', letterSpacing: '2px' }}>
-              🚀 Recommended: {results.prediction}
+    <div style={{ backgroundColor: '#0a0a0c', minHeight: '100vh', color: '#fff', padding: '40px 20px' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+        
+        {loading && (
+          <div style={{ textAlign: 'center', marginTop: '150px' }}>
+            <h2 style={{ color: '#4facfe', letterSpacing: '4px', animation: 'pulse 1.5s infinite' }}>
+              ANALYZING ACADEMIC PROFILE...
             </h2>
-            <p style={{ color: '#555', fontSize: '12px' }}>Based on NNRG Academic Trends</p>
           </div>
+        )}
 
-          <h3 className="section-title" style={{ color: '#fff', marginBottom: '25px' }}>Your Skill Proficiency</h3>
-          <div className="career-grid">
-            {results.pillar_stats && Object.entries(results.pillar_stats).map(([skill, score]) => (
-              <div key={skill} className="skill-card">
-                <p style={{ color: '#888', textTransform: 'uppercase', fontSize: '11px', margin: '0' }}>{skill}</p>
-                <h4 style={{ color: '#00ff88', fontSize: '28px', margin: '10px 0' }}>{Math.round(score)}%</h4>
-                <div style={{ width: '100%', height: '4px', background: '#222', borderRadius: '2px' }}>
-                  <div style={{ width: `${score}%`, height: '100%', background: 'linear-gradient(90deg, #00ff88, #00d2ff)' }}></div>
-                </div>
+        {!loading && step < 3 && (
+          <div style={{ background: '#111116', padding: '40px', borderRadius: '15px', border: '1px solid #1e1e24' }}>
+            {step === 1 ? (
+              <div style={{ textAlign: 'center' }}>
+                <h2 style={{ letterSpacing: '2px', marginBottom: '30px' }}>SELECT SPECIALIZATION</h2>
+                <select value={currentYear} onChange={(e) => setCurrentYear(e.target.value)} style={selectStyle}>
+                  {Object.keys(YEAR_SEMESTER_MAP).map(y => <option key={y} value={y}>{y}</option>)}
+                </select>
+                <select value={branch} onChange={(e) => setBranch(e.target.value)} style={selectStyle}>
+                  {Object.keys(BRANCH_SYLLABUS).map(b => <option key={b} value={b}>{b}</option>)}
+                </select>
+                <button onClick={() => setStep(2)} style={buttonStyle}>INITIALIZE →</button>
               </div>
-            ))}
+            ) : (
+              <div>
+                {/* --- ERROR MESSAGE BOX --- */}
+                {message && (
+                  <div style={{ 
+                    background: 'rgba(255, 77, 77, 0.1)', 
+                    color: '#ff4d4d', padding: '15px', borderRadius: '8px', 
+                    marginBottom: '20px', border: '1px solid #ff4d4d',
+                    textAlign: 'center', fontWeight: 'bold'
+                  }}>
+                    {message}
+                  </div>
+                )}
+                <GradeForm 
+                  branch={branch} 
+                  currentYear={currentYear} 
+                  yearMap={YEAR_SEMESTER_MAP} 
+                  syllabusMap={BRANCH_SYLLABUS} 
+                  onSubmit={handleGradeSubmit} 
+                />
+              </div>
+            )}
           </div>
+        )}
 
-          <h3 className="section-title" style={{ color: '#fff', marginTop: '60px', marginBottom: '25px' }}>Zero-to-End Detailed Roadmap</h3>
-          <div className="career-grid">
-            {results.roadmap && results.roadmap.map((phase, index) => {
-              const lines = phase.split('\n');
-              return (
-                <div key={index} className="career-card"> 
-                  <span className="phase-title" style={{ color: '#fff', fontWeight: 'bold', display: 'block', marginBottom: '15px' }}>
-                    {lines[0].replace('Phase', 'PHASE')}
-                  </span>
-                  {lines.slice(1).map((line, i) => (
-                    <p key={i} className={line.includes('Milestone:') ? 'milestone-highlight' : 'roadmap-detail'}>
-                      {line.trim().replace('- ', '')}
-                    </p>
-                  ))}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* RESTART BUTTON */}
-          <div style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '40px' }}>
-            <button 
-              onClick={() => {setStep(1); setResults(null);}} 
-              style={{ padding: '15px 40px', background: 'transparent', color: '#666', border: '1px solid #333', borderRadius: '30px', cursor: 'pointer', fontWeight: 'bold' }}
-              onMouseOver={(e) => { e.target.style.color = '#fff'; e.target.style.borderColor = '#ff4d4d'; }}
-              onMouseOut={(e) => { e.target.style.color = '#666'; e.target.style.borderColor = '#333'; }}
-            >
-              RESTART ASSESSMENT
-            </button>
-          </div>
-        </div>
-      )}
+        {!loading && step === 3 && results && (
+  <div style={{ animation: 'fadeIn 1s ease-in' }}>
+    
+    {/* --- NEW GUIDANCE DISCLAIMER --- */}
+    <div style={{ 
+      background: 'rgba(79, 172, 254, 0.1)', 
+      border: '1px solid #4facfe', 
+      padding: '15px', 
+      borderRadius: '10px', 
+      marginBottom: '30px',
+      textAlign: 'center'
+    }}>
+      <span style={{ color: '#4facfe', fontWeight: 'bold', fontSize: '14px', letterSpacing: '1px' }}>
+        ℹ️ CAREER GUIDANCE ADVISORY
+      </span>
+      <p style={{ color: '#bbb', fontSize: '12px', margin: '5px 0 0 0', lineHeight: '1.4' }}>
+        This roadmap is generated based on your academic performance and is intended for <b>guidance purposes only</b>. 
+        It is not a fixed or guaranteed career path. Please consult with academic advisors or industry professionals 
+        before making final career decisions.
+      </p>
     </div>
+
+    <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+      <span style={{ color: '#ff4d4d', letterSpacing: '5px', fontSize: '12px' }}>PREDICTED ROLE</span>
+      <h1 style={{ color: '#00ff88', fontSize: '3.5rem', margin: '10px 0', textShadow: '0 0 20px rgba(0,255,136,0.3)' }}>
+        {results.prediction}
+      </h1>
+    </div>
+
+    {/* --- SKILL PROFICIENCY SECTION --- */}
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '40px' }}>
+        <h3 style={{ color: '#4facfe', gridColumn: '1/-1', borderBottom: '1px solid #333', paddingBottom: '10px' }}>SKILL PROFICIENCY</h3>
+        {Object.entries(results.pillar_stats).map(([skill, value]) => (
+            <div key={skill} style={{ background: '#1a1a20', padding: '15px', borderRadius: '8px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <span style={{ textTransform: 'uppercase', fontSize: '11px', fontWeight: 'bold' }}>{skill.replace('_', ' ')}</span>
+                    <span style={{ color: '#00ff88', fontWeight: 'bold' }}>{value}%</span>
+                </div>
+                <div style={{ width: '100%', height: '6px', background: '#333', borderRadius: '10px' }}>
+                    <div style={{ width: `${value}%`, height: '100%', background: '#00ff88', borderRadius: '10px', transition: 'width 1s ease-in-out' }}></div>
+                </div>
+            </div>
+        ))}
+    </div>
+
+    <div style={{ display: 'grid', gap: '20px' }}>
+      <h3 style={{ color: '#4facfe', borderBottom: '1px solid #333', paddingBottom: '10px' }}>CAREER ROADMAP</h3>
+      {results.roadmap.map((phase, i) => (
+        <div key={i} style={{ background: '#111116', padding: '25px', borderRadius: '12px', borderLeft: '5px solid #4facfe' }}>
+          {phase.split('\n').map((line, idx) => (
+            <p key={idx} style={{ color: idx === 0 ? '#4facfe' : '#bbb', fontWeight: idx === 0 ? 'bold' : 'normal', margin: '5px 0' }}>
+              {line}
+            </p>
+          ))}
+        </div>
+      ))}
+    </div>
+    
+    <button 
+      onClick={() => {setStep(1); setResults(null); setMessage("");}} 
+      style={{ ...buttonStyle, background: 'transparent', border: '1px solid #333', marginTop: '40px' }}
+    >
+      REBOOT SYSTEM
+    </button>
   </div>
-);
+        )}
+      </div>
+    </div>
+  );
 }
+
+const selectStyle = { width: '100%', padding: '15px', background: '#050505', color: '#fff', border: '1px solid #333', borderRadius: '8px', marginBottom: '20px' };
+const buttonStyle = { width: '100%', padding: '18px', background: '#ff4d4d', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', letterSpacing: '2px' };
+
 export default App;
