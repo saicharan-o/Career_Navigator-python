@@ -184,42 +184,39 @@ function App() {
     </div>
 
    {/* 3. THE ROADMAP SECTION - MODIFIED FOR CARDS */}
-<div style={{ marginTop: '30px', textAlign: 'left' }}>
-  <h2 style={{ color: '#2d3748', borderBottom: '2px solid #74ebd5', paddingBottom: '10px', fontSize: '22px' }}>
-    ZERO-TO-END DETAILED ROADMAP
+<div style={{ backgroundColor: '#0f0f12', padding: '40px', borderRadius: '20px', color: 'white' }}>
+  <h2 style={{ textTransform: 'uppercase', letterSpacing: '2px', borderBottom: '2px solid #333', paddingBottom: '10px' }}>
+    Zero-to-End Detailed Roadmap
   </h2>
 
   {results.roadmap && results.roadmap.length > 0 ? (
     <div className="career-grid">
-  {results.roadmap.map((phase, index) => {
-    const lines = phase.split('\n');
-    const title = lines[0]; 
-    const details = lines.slice(1);
+      {results.roadmap.map((phase, index) => {
+        const lines = phase.split('\n');
+        const title = lines[0]; 
+        const details = lines.slice(1);
 
-    return (
-      <div key={index} className="career-card"> 
-        <span className="phase-title">🚀 {title}</span>
-        
-        <div className="details-box">
-          {details.map((line, i) => {
-            const isMilestone = line.includes('Milestone:');
-            return (
-              <p 
-                key={i} 
-                className={isMilestone ? 'milestone-highlight' : 'roadmap-detail'}
-                style={{ margin: '8px 0', fontSize: '14px', opacity: isMilestone ? 1 : 0.8 }}
-              >
-                {line.trim().replace('- ', '')}
-              </p>
-            );
-          })}
-        </div>
-      </div>
-    );
-  })}
-</div>
+        return (
+          <div key={index} className="career-card"> 
+            <span className="phase-title">🚀 {title}</span>
+            
+            {details.map((line, i) => {
+              const isMilestone = line.includes('Milestone:');
+              return (
+                <p 
+                  key={i} 
+                  className={isMilestone ? 'milestone-highlight' : 'roadmap-detail'}
+                >
+                  {line.trim().replace('- ', '')}
+                </p>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
   ) : (
-    <p style={{ color: '#dc3545' }}>No roadmap steps were generated.</p>
+    <p style={{ color: '#ff4d4d' }}>No roadmap steps were generated.</p>
   )}
 </div>
 
