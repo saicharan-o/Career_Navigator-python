@@ -36,26 +36,31 @@
     transform: rotate(360deg);
   }
 }
-/* GLOBAL THEME */
-body {
-  background-color: #0a0a0c; /* Deep cinematic black */
+/* Force the entire background to be dark from start to finish */
+html, body, #root {
+  background-color: #0a0a0c !important; 
   color: #e0e0e0;
-  font-family: 'Inter', sans-serif;
   margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
-/* SECTION HEADERS */
-.section-title {
-  text-align: left;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #fff;
-  border-bottom: 2px solid #333;
-  padding-bottom: 15px;
-  margin-bottom: 30px;
+/* Container for the form and results */
+.main-wrapper {
+  background-color: #0a0a0c;
+  min-height: 100vh;
+  padding: 40px 20px;
 }
 
-/* GRID SYSTEM - FOR CARDS */
+/* Form Styles - Dark Input look */
+select, button, input {
+  background: #1a1a1f !important;
+  color: white !important;
+  border: 1px solid #333 !important;
+  border-radius: 8px;
+}
+
+/* GRID SYSTEM - EXACTLY LIKE CAR PROJECT */
 .career-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -63,35 +68,28 @@ body {
   padding: 20px 0;
 }
 
-/* THE CINEMATIC CARD - MATCHING CAR RECOMMENDER */
+/* THE CINEMATIC CARD - WITH THE POP-UP EFFECT */
 .career-card, .skill-card {
   background: #16161a;
   border: 1px solid #2a2a2e;
   border-radius: 16px;
   padding: 25px;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 4px solid #ff4d4d; /* Red accent from your car project */
-  
-  /* THE SMOOTH POP-UP TRANSITION */
+  border-bottom: 4px solid #ff4d4d; /* Red accent from car project */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
 }
 
-/* HOVER ANIMATION - THE "LIFT" EFFECT */
+/* HOVER ANIMATION - HIGHLIGHTS AND LIFTS UPWARDS */
 .career-card:hover, .skill-card:hover {
-  transform: translateY(-15px) scale(1.03); /* Aggressive pop-up */
-  box-shadow: 0 20px 40px rgba(255, 77, 77, 0.25); /* Red glow */
-  background: #1f1f25;
+  transform: translateY(-15px) scale(1.03); /* Lifts upwards like the car cards */
+  box-shadow: 0 20px 40px rgba(255, 77, 77, 0.25); /* Glowing highlight */
   border-color: #ff4d4d;
 }
 
-/* TITLES & TEXT */
 .phase-title {
-  font-size: 1.25rem;
-  font-weight: 900;
   color: #ffffff;
+  font-weight: 900;
+  font-size: 1.25rem;
   display: block;
   margin-bottom: 15px;
 }
@@ -100,16 +98,14 @@ body {
   color: #a0a0a8;
   font-size: 14px;
   line-height: 1.6;
-  margin: 8px 0;
 }
 
-/* MILESTONE HIGHLIGHT - GREEN LIKE CAR PRICES */
 .milestone-highlight {
-  margin-top: 15px;
-  padding: 10px;
+  color: #00ff88; /* Bright green like car prices */
   background: rgba(0, 255, 136, 0.1);
-  border-left: 3px solid #00ff88;
-  color: #00ff88;
+  padding: 8px;
+  border-radius: 4px;
   font-weight: bold;
-  font-size: 14px;
+  display: block;
+  margin-top: 10px;
 }
