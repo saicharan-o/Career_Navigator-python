@@ -36,63 +36,51 @@
     transform: rotate(360deg);
   }
 }
+/* Add this at the very bottom of your App.css */
 
-/* --- Add this to the bottom of App.css --- */
-
-/* The overall container for results */
 .career-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+  text-align: left; /* Ensures text inside is aligned left */
 }
 
-/* The Individual Phase Card */
 .career-card {
   background: #ffffff;
-  border-left: 6px solid #4facfe;
+  border-left: 6px solid #007bff; /* Blue strip on the left */
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  /* This makes the hover move smoothly */
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* CRITICAL: This makes the movement smooth */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 
-/* Hover Effect: Card Lifts and Glows */
+/* This is what makes it "Pop Up" on mouse over */
 .career-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(79, 172, 254, 0.2);
-  border-left-color: #00d2ff;
-  background-color: #f8fbff;
-}
-
-/* The Shine Effect on Hover */
-.career-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  transition: 0.5s;
-}
-
-.career-card:hover::after {
-  left: 100%;
+  transform: translateY(-10px) scale(1.02); /* Moves up and gets slightly bigger */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Deep shadow for "lifted" look */
+  border-left-color: #00d2ff; /* Color change on hover */
 }
 
 .phase-title {
   font-weight: 800;
-  font-size: 18px;
-  color: #1e3a8a;
-  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #1a202c;
+  margin-bottom: 8px;
+  display: block;
 }
 
-.milestone-text {
-  color: #059669;
-  font-weight: 700;
+.roadmap-detail {
+  margin: 4px 0;
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.milestone-highlight {
+  color: #2f855a;
+  font-weight: bold;
 }
