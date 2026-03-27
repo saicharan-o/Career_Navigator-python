@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import GradeForm from './components/GradeForm';
+import { jsPDF } from "jspdf";
 
 const YEAR_SEMESTER_MAP = {
   "1-1": [], 
@@ -86,9 +87,48 @@ function App() {
   const [currentYear, setCurrentYear] = useState("4-2"); 
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-  // 1. Add a new state at the top of your App function
-const [message, setMessage] = useState("");
+  const downloadPDF = () => {
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    // Title
+    doc.setFontSize(22);
+    doc.setTextColor(79, 172, 254);
+    doc.text("CAREER NAVIGATION ROADMAP", pageWidth / 2, 20, { align: "center" });
+
+    // Prediction
+    doc.setFontSize(16);
+    doc.setTextColor(0, 255, 136);
+    doc.text(`Predicted Role: ${results.prediction}`, pageWidth / 2, 35, { align: "center" });
+
+    // Disclaimer
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    const disclaimer = "Disclaimer: This roadmap is for guidance purposes only and based on academic data analysis. It is not a guaranteed career path.";
+    const splitDisclaimer = doc.splitTextToSize(disclaimer, pageWidth - 40);
+    doc.text(splitDisclaimer, 20, 45);
+
+    // Roadmap Content
+    doc.setFontSize(14);
+    doc.setTextColor(0, 0, 0);
+    let cursorY = 65;
+
+    results.roadmap.forEach((phase, index) => {
+      if (cursorY > 260) { doc.addPage(); cursorY = 20; }
+      doc.setFont("helvetica", "bold");
+      doc.text(`Phase ${index + 1}:`, 20, cursorY);
+      cursorY += 7;
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+      const lines = doc.splitTextToSize(phase, pageWidth - 40);
+      doc.text(lines, 20, cursorY);
+      cursorY += (lines.length * 6) + 10;
+    });
+
+    doc.save(`${results.prediction}_Roadmap.pdf`);
+  };
 
 // 2. Update the handleGradeSubmit function
 const handleGradeSubmit = async (grades) => {
@@ -129,7 +169,7 @@ const handleGradeSubmit = async (grades) => {
   return (
     <div style={{ backgroundColor: '#0a0a0c', minHeight: '100vh', color: '#fff', padding: '40px 20px' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        
+
         {loading && (
           <div style={{ textAlign: 'center', marginTop: '150px' }}>
             <h2 style={{ color: '#4facfe', letterSpacing: '4px', animation: 'pulse 1.5s infinite' }}>
@@ -153,23 +193,22 @@ const handleGradeSubmit = async (grades) => {
               </div>
             ) : (
               <div>
-                {/* --- ERROR MESSAGE BOX --- */}
                 {message && (
-                  <div style={{ 
-                    background: 'rgba(255, 77, 77, 0.1)', 
-                    color: '#ff4d4d', padding: '15px', borderRadius: '8px', 
+                  <div style={{
+                    background: 'rgba(255, 77, 77, 0.1)',
+                    color: '#ff4d4d', padding: '15px', borderRadius: '8px',
                     marginBottom: '20px', border: '1px solid #ff4d4d',
                     textAlign: 'center', fontWeight: 'bold'
                   }}>
                     {message}
                   </div>
                 )}
-                <GradeForm 
-                  branch={branch} 
-                  currentYear={currentYear} 
-                  yearMap={YEAR_SEMESTER_MAP} 
-                  syllabusMap={BRANCH_SYLLABUS} 
-                  onSubmit={handleGradeSubmit} 
+                <GradeForm
+                  branch={branch}
+                  currentYear={currentYear}
+                  yearMap={YEAR_SEMESTER_MAP}
+                  syllabusMap={BRANCH_SYLLABUS}
+                  onSubmit={handleGradeSubmit}
                 />
               </div>
             )}
@@ -177,70 +216,77 @@ const handleGradeSubmit = async (grades) => {
         )}
 
         {!loading && step === 3 && results && (
-  <div style={{ animation: 'fadeIn 1s ease-in' }}>
-    
-    {/* --- NEW GUIDANCE DISCLAIMER --- */}
-    <div style={{ 
-      background: 'rgba(79, 172, 254, 0.1)', 
-      border: '1px solid #4facfe', 
-      padding: '15px', 
-      borderRadius: '10px', 
-      marginBottom: '30px',
-      textAlign: 'center'
-    }}>
-      <span style={{ color: '#4facfe', fontWeight: 'bold', fontSize: '14px', letterSpacing: '1px' }}>
-        ℹ️ CAREER GUIDANCE ADVISORY
-      </span>
-      <p style={{ color: '#bbb', fontSize: '12px', margin: '5px 0 0 0', lineHeight: '1.4' }}>
-        This roadmap is generated based on your academic performance and is intended for <b>guidance purposes only</b>. 
-        It is not a fixed or guaranteed career path. Please consult with academic advisors or industry professionals 
-        before making final career decisions.
-      </p>
-    </div>
+          <div style={{ animation: 'fadeIn 1s ease-in' }}>
+            <div style={{
+              background: 'rgba(79, 172, 254, 0.1)',
+              border: '1px solid #4facfe',
+              padding: '15px',
+              borderRadius: '10px',
+              marginBottom: '30px',
+              textAlign: 'center'
+            }}>
+              <span style={{ color: '#4facfe', fontWeight: 'bold', fontSize: '14px', letterSpacing: '1px' }}>
+                ℹ️ CAREER GUIDANCE ADVISORY
+              </span>
+              <p style={{ color: '#bbb', fontSize: '12px', margin: '5px 0 0 0', lineHeight: '1.4' }}>
+                This roadmap is generated based on your academic performance and is intended for <b>guidance purposes only</b>.
+                It is not a fixed or guaranteed career path. Please consult with academic advisors or industry professionals
+                before making final career decisions.
+              </p>
+            </div>
 
-    <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-      <span style={{ color: '#ff4d4d', letterSpacing: '5px', fontSize: '12px' }}>PREDICTED ROLE</span>
-      <h1 style={{ color: '#00ff88', fontSize: '3.5rem', margin: '10px 0', textShadow: '0 0 20px rgba(0,255,136,0.3)' }}>
-        {results.prediction}
-      </h1>
-    </div>
+            <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+              <span style={{ color: '#ff4d4d', letterSpacing: '5px', fontSize: '12px' }}>PREDICTED ROLE</span>
+              <h1 style={{ color: '#00ff88', fontSize: '3.5rem', margin: '10px 0', textShadow: '0 0 20px rgba(0,255,136,0.3)' }}>
+                {results.prediction}
+              </h1>
+            </div>
 
-    {/* --- SKILL PROFICIENCY SECTION --- */}
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '40px' }}>
-        <h3 style={{ color: '#4facfe', gridColumn: '1/-1', borderBottom: '1px solid #333', paddingBottom: '10px' }}>SKILL PROFICIENCY</h3>
-        {Object.entries(results.pillar_stats).map(([skill, value]) => (
-            <div key={skill} style={{ background: '#1a1a20', padding: '15px', borderRadius: '8px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '40px' }}>
+              <h3 style={{ color: '#4facfe', gridColumn: '1/-1', borderBottom: '1px solid #333', paddingBottom: '10px' }}>SKILL PROFICIENCY</h3>
+              {Object.entries(results.pillar_stats).map(([skill, value]) => (
+                <div key={skill} style={{ background: '#1a1a20', padding: '15px', borderRadius: '8px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                     <span style={{ textTransform: 'uppercase', fontSize: '11px', fontWeight: 'bold' }}>{skill.replace('_', ' ')}</span>
                     <span style={{ color: '#00ff88', fontWeight: 'bold' }}>{value}%</span>
-                </div>
-                <div style={{ width: '100%', height: '6px', background: '#333', borderRadius: '10px' }}>
+                  </div>
+                  <div style={{ width: '100%', height: '6px', background: '#333', borderRadius: '10px' }}>
                     <div style={{ width: `${value}%`, height: '100%', background: '#00ff88', borderRadius: '10px', transition: 'width 1s ease-in-out' }}></div>
+                  </div>
                 </div>
+              ))}
             </div>
-        ))}
-    </div>
 
-    <div style={{ display: 'grid', gap: '20px' }}>
-      <h3 style={{ color: '#4facfe', borderBottom: '1px solid #333', paddingBottom: '10px' }}>CAREER ROADMAP</h3>
-      {results.roadmap.map((phase, i) => (
-        <div key={i} style={{ background: '#111116', padding: '25px', borderRadius: '12px', borderLeft: '5px solid #4facfe' }}>
-          {phase.split('\n').map((line, idx) => (
-            <p key={idx} style={{ color: idx === 0 ? '#4facfe' : '#bbb', fontWeight: idx === 0 ? 'bold' : 'normal', margin: '5px 0' }}>
-              {line}
-            </p>
-          ))}
-        </div>
-      ))}
-    </div>
-    
-    <button 
-      onClick={() => {setStep(1); setResults(null); setMessage("");}} 
-      style={{ ...buttonStyle, background: 'transparent', border: '1px solid #333', marginTop: '40px' }}
-    >
-      REBOOT SYSTEM
-    </button>
-  </div>
+            <div style={{ display: 'grid', gap: '20px' }}>
+              <h3 style={{ color: '#4facfe', borderBottom: '1px solid #333', paddingBottom: '10px' }}>CAREER ROADMAP</h3>
+              {results.roadmap.map((phase, i) => (
+                <div key={i} style={{ background: '#111116', padding: '25px', borderRadius: '12px', borderLeft: '5px solid #4facfe' }}>
+                  {phase.split('\n').map((line, idx) => (
+                    <p key={idx} style={{ color: idx === 0 ? '#4facfe' : '#bbb', fontWeight: idx === 0 ? 'bold' : 'normal', margin: '5px 0' }}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            {/* --- UPDATED BUTTON GROUP --- */}
+            <div style={{ display: 'flex', gap: '15px', marginTop: '40px' }}>
+              <button
+                onClick={downloadPDF}
+                style={{ ...buttonStyle, background: '#00ff88', color: '#000', flex: 2 }}
+              >
+                📥 DOWNLOAD ROADMAP (PDF)
+              </button>
+
+              <button
+                onClick={() => { setStep(1); setResults(null); setMessage(""); }}
+                style={{ ...buttonStyle, background: 'transparent', border: '1px solid #333', flex: 1 }}
+              >
+                REBOOT SYSTEM
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>
