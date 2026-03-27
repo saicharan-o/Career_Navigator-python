@@ -36,58 +36,80 @@
     transform: rotate(360deg);
   }
 }
-/* Container for the Grid - Exactly like the Car Project */
+/* GLOBAL THEME */
+body {
+  background-color: #0a0a0c; /* Deep cinematic black */
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+/* SECTION HEADERS */
+.section-title {
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  border-bottom: 2px solid #333;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+/* GRID SYSTEM - FOR CARDS */
 .career-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
-  padding: 30px 0;
-  background: #0f0f12; /* Dark background */
+  padding: 20px 0;
 }
 
-/* The Cinematic Card */
-.career-card {
-  background: #1a1a1f; /* Slightly lighter dark */
-  color: white;
+/* THE CINEMATIC CARD - MATCHING CAR RECOMMENDER */
+.career-card, .skill-card {
+  background: #16161a;
+  border: 1px solid #2a2a2e;
+  border-radius: 16px;
   padding: 25px;
-  border-radius: 15px;
-  border-bottom: 3px solid #ff4d4d; /* That red accent from your car cards */
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
   text-align: left;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #ff4d4d; /* Red accent from your car project */
+  
+  /* THE SMOOTH POP-UP TRANSITION */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
 }
 
-/* THE POP-UP ANIMATION */
-.career-card:hover {
-  transform: translateY(-15px) scale(1.03); /* Lifts up high */
-  box-shadow: 0 15px 35px rgba(255, 77, 77, 0.3); /* Red glow */
-  background: #25252b;
+/* HOVER ANIMATION - THE "LIFT" EFFECT */
+.career-card:hover, .skill-card:hover {
+  transform: translateY(-15px) scale(1.03); /* Aggressive pop-up */
+  box-shadow: 0 20px 40px rgba(255, 77, 77, 0.25); /* Red glow */
+  background: #1f1f25;
+  border-color: #ff4d4d;
 }
 
+/* TITLES & TEXT */
 .phase-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 900;
   color: #ffffff;
-  margin-bottom: 15px;
   display: block;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  margin-bottom: 15px;
 }
 
 .roadmap-detail {
-  color: #b0b0b0;
+  color: #a0a0a8;
   font-size: 14px;
-  margin: 10px 0;
   line-height: 1.6;
+  margin: 8px 0;
 }
 
+/* MILESTONE HIGHLIGHT - GREEN LIKE CAR PRICES */
 .milestone-highlight {
-  color: #00ff88; /* Bright green for Milestones like your car prices */
-  font-weight: bold;
-  font-size: 15px;
-  border-top: 1px solid #333;
-  padding-top: 10px;
   margin-top: 15px;
-  display: block;
+  padding: 10px;
+  background: rgba(0, 255, 136, 0.1);
+  border-left: 3px solid #00ff88;
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 14px;
 }
