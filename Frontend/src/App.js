@@ -183,54 +183,42 @@ function App() {
       </div>
     </div>
 
-    {/* 3. THE ROADMAP SECTION (The part you were missing) */}
-    <div style={{ marginTop: '30px', textAlign: 'left' }}>
-      <h2 style={{ color: '#2d3748', borderBottom: '2px solid #74ebd5', paddingBottom: '10px', fontSize: '22px' }}>
-        ZERO-TO-END DETAILED ROADMAP
-      </h2>
+   {/* 3. THE ROADMAP SECTION (With Animation Classes) */}
+<div style={{ marginTop: '30px', textAlign: 'left' }}>
+  <h2 style={{ color: '#2d3748', borderBottom: '2px solid #74ebd5', paddingBottom: '10px', fontSize: '22px' }}>
+    ZERO-TO-END DETAILED ROADMAP
+  </h2>
 
-      {results.roadmap && results.roadmap.length > 0 ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '20px' }}>
-          {results.roadmap.map((phase, index) => {
-            const lines = phase.split('\n');
-            const title = lines[0]; // The "Phase X" line
-            const details = lines.slice(1); // The bullet points and milestones
+  {results.roadmap && results.roadmap.length > 0 ? (
+    <div className="career-grid"> {/* --- USING THE NEW CLASS --- */}
+      {results.roadmap.map((phase, index) => {
+        const lines = phase.split('\n');
+        const title = lines[0]; 
+        const details = lines.slice(1);
 
-            return (
-              <div key={index} style={{ 
-                padding: '20px', 
-                backgroundColor: '#fff', 
-                borderLeft: '6px solid #4facfe', 
-                borderRadius: '10px',
-                boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
-              }}>
-                {/* Phase Title */}
-                <div style={{ fontWeight: '800', fontSize: '18px', color: '#1e3a8a', marginBottom: '10px' }}>
-                  {title}
-                </div>
-                
-                {/* Phase Details & Milestone */}
-                <div style={{ paddingLeft: '15px' }}>
-                  {details.map((line, i) => (
-                    <p key={i} style={{ 
-                      margin: '5px 0', 
-                      color: line.includes('Milestone:') ? '#059669' : '#4a5568',
-                      fontWeight: line.includes('Milestone:') ? '700' : '400',
-                      fontSize: '15px',
-                      lineHeight: '1.5'
-                    }}>
-                      {line.trim()}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <p style={{ color: '#dc3545' }}>No roadmap steps were generated. Please check your Python logic.</p>
-      )}
+        return (
+          <div key={index} className="career-card"> {/* --- USING THE NEW CLASS --- */}
+            <div className="phase-title">{title}</div>
+            
+            <div style={{ paddingLeft: '10px' }}>
+              {details.map((line, i) => (
+                <p key={i} style={{ 
+                  margin: '5px 0', 
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }} className={line.includes('Milestone:') ? 'milestone-text' : ''}>
+                  {line.trim()}
+                </p>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
+  ) : (
+    <p style={{ color: '#dc3545' }}>No roadmap steps were generated.</p>
+  )}
+</div>
 
     {/* 4. Action Button */}
     <div style={{ textAlign: 'center', marginTop: '40px' }}>
