@@ -183,34 +183,28 @@ function App() {
       </div>
     </div>
 
-   {/* 3. THE ROADMAP SECTION (With Animation Classes) */}
+   {/* 3. THE ROADMAP SECTION - MODIFIED FOR CARDS */}
 <div style={{ marginTop: '30px', textAlign: 'left' }}>
   <h2 style={{ color: '#2d3748', borderBottom: '2px solid #74ebd5', paddingBottom: '10px', fontSize: '22px' }}>
     ZERO-TO-END DETAILED ROADMAP
   </h2>
 
   {results.roadmap && results.roadmap.length > 0 ? (
-    <div className="career-grid"> {/* --- USING THE NEW CLASS --- */}
+    <div className="career-grid">
       {results.roadmap.map((phase, index) => {
         const lines = phase.split('\n');
         const title = lines[0]; 
         const details = lines.slice(1);
 
         return (
-          <div key={index} className="career-card"> {/* --- USING THE NEW CLASS --- */}
-            <div className="phase-title">{title}</div>
+          <div key={index} className="career-card"> 
+            <span className="phase-title">{title}</span>
             
-            <div style={{ paddingLeft: '10px' }}>
-              {details.map((line, i) => (
-                <p key={i} style={{ 
-                  margin: '5px 0', 
-                  fontSize: '14px',
-                  lineHeight: '1.4'
-                }} className={line.includes('Milestone:') ? 'milestone-text' : ''}>
-                  {line.trim()}
-                </p>
-              ))}
-            </div>
+            {details.map((line, i) => (
+              <p key={i} className={`roadmap-detail ${line.includes('Milestone:') ? 'milestone-highlight' : ''}`}>
+                {line.trim()}
+              </p>
+            ))}
           </div>
         );
       })}
