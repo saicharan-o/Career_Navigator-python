@@ -110,55 +110,132 @@ function App() {
   <div className="main-wrapper">
     <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
       
-      {/* Title - Stays white/blue on dark background */}
-      <h1 style={{ color: '#fff', fontSize: '2.5rem', fontWeight: '900', textAlign: 'center' }}>
-        CAREER NAVIGATOR
-      </h1>
-      <hr style={{ borderColor: '#333' }} />
+      {/* 1. CINEMATIC HEADER - Always visible */}
+      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <h1 style={{ color: '#fff', fontSize: '2.5rem', fontWeight: '900', letterSpacing: '2px', margin: '0' }}>
+          CAREER NAVIGATOR
+        </h1>
+        <div style={{ width: '60px', height: '4px', background: '#ff4d4d', margin: '15px auto' }}></div>
+      </div>
 
-      {/* FORM SECTION (STEP 1 & 2) */}
-      {!loading && step < 3 && (
-        <div style={{ background: '#111', padding: '30px', borderRadius: '15px', border: '1px solid #222' }}>
-           {/* Your existing Form Logic goes here */}
+      {/* 2. LOADING STATE */}
+      {loading && (
+        <div style={{ textAlign: 'center', padding: '50px' }}>
+          <h2 style={{ color: '#4facfe', animate: 'pulse 2s infinite' }}>
+            🚀 Analyzing NNRG Curriculum... Please wait.
+          </h2>
         </div>
       )}
 
-      {/* RESULTS SECTION (STEP 3) */}
+      {/* 3. FORM SECTION (Step 1 & 2) - Now inside a Dark Card */}
+      {!loading && step < 3 && (
+        <div className="career-card" style={{ maxWidth: '600px', margin: '0 auto', cursor: 'default' }}>
+          {step === 1 ? (
+            <div>
+              <h3 style={{ color: '#fff', marginBottom: '25px' }}>Academic Details</h3>
+              
+              <div style={{ marginBottom: '25px' }}>
+                <label style={{ display: 'block', color: '#888', marginBottom: '8px', fontSize: '14px' }}>Present Studying Year-Sem:</label>
+                <select 
+                  value={currentYear} 
+                  onChange={(e) => setCurrentYear(e.target.value)}
+                  style={{ width: '100%', padding: '12px', background: '#1a1a1f', color: '#fff', border: '1px solid #333', borderRadius: '8px' }}
+                >
+                  {Object.keys(YEAR_SEMESTER_MAP).map(y => (
+                    <option key={y} value={y}>{y}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div style={{ marginBottom: '30px' }}>
+                <label style={{ display: 'block', color: '#888', marginBottom: '8px', fontSize: '14px' }}>Select Your Branch:</label>
+                <select 
+                  value={branch} 
+                  onChange={(e) => setBranch(e.target.value)}
+                  style={{ width: '100%', padding: '12px', background: '#1a1a1f', color: '#fff', border: '1px solid #333', borderRadius: '8px' }}
+                >
+                  <option value="CSE">CSE</option>
+                  <option value="CSE IT">CSE IT</option>
+                  <option value="CSE AI-ML">CSE AI-ML</option>
+                  <option value="CSE Data Science">CSE Data Science</option>
+                  <option value="ECE">ECE</option>
+                  <option value="Mechanical">Mechanical</option>
+                  <option value="Civil">Civil</option>
+                </select>
+              </div>
+
+              <button 
+                onClick={() => setStep(2)} 
+                style={{ width: '100%', padding: '15px', background: '#ff4d4d', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' }}
+              >
+                NEXT STEP →
+              </button>
+            </div>
+          ) : (
+            <GradeForm 
+              branch={branch} 
+              currentYear={currentYear} 
+              yearMap={YEAR_SEMESTER_MAP} 
+              syllabusMap={BRANCH_SYLLABUS} 
+              onSubmit={handleSubmit} 
+            />
+          )}
+        </div>
+      )}
+
+      {/* 4. RESULTS SECTION (Step 3) */}
       {!loading && step === 3 && results && (
         <div className="analysis-container">
           
           <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-            <h2 style={{ color: '#4facfe', textTransform: 'uppercase' }}>🚀 {results.prediction}</h2>
+            <h2 style={{ color: '#4facfe', textTransform: 'uppercase', letterSpacing: '2px' }}>
+              🚀 Recommended: {results.prediction}
+            </h2>
+            <p style={{ color: '#555', fontSize: '12px' }}>Based on NNRG Academic Trends</p>
           </div>
 
-          <h3 className="section-title">Your Skill Proficiency</h3>
+          <h3 className="section-title" style={{ color: '#fff', marginBottom: '25px' }}>Your Skill Proficiency</h3>
           <div className="career-grid">
             {results.pillar_stats && Object.entries(results.pillar_stats).map(([skill, score]) => (
               <div key={skill} className="skill-card">
-                <p style={{ color: '#888', textTransform: 'uppercase', fontSize: '11px' }}>{skill}</p>
-                <h4 style={{ color: '#00ff88', fontSize: '24px' }}>{Math.round(score)}%</h4>
-                <div style={{ width: '100%', height: '4px', background: '#333' }}>
-                  <div style={{ width: `${score}%`, height: '100%', background: '#00ff88' }}></div>
+                <p style={{ color: '#888', textTransform: 'uppercase', fontSize: '11px', margin: '0' }}>{skill}</p>
+                <h4 style={{ color: '#00ff88', fontSize: '28px', margin: '10px 0' }}>{Math.round(score)}%</h4>
+                <div style={{ width: '100%', height: '4px', background: '#222', borderRadius: '2px' }}>
+                  <div style={{ width: `${score}%`, height: '100%', background: 'linear-gradient(90deg, #00ff88, #00d2ff)' }}></div>
                 </div>
               </div>
             ))}
           </div>
 
-          <h3 className="section-title" style={{ marginTop: '50px' }}>Zero-to-End Detailed Roadmap</h3>
+          <h3 className="section-title" style={{ color: '#fff', marginTop: '60px', marginBottom: '25px' }}>Zero-to-End Detailed Roadmap</h3>
           <div className="career-grid">
-            {results.roadmap.map((phase, index) => {
+            {results.roadmap && results.roadmap.map((phase, index) => {
               const lines = phase.split('\n');
               return (
                 <div key={index} className="career-card"> 
-                  <span className="phase-title">{lines[0]}</span>
+                  <span className="phase-title" style={{ color: '#fff', fontWeight: 'bold', display: 'block', marginBottom: '15px' }}>
+                    {lines[0].replace('Phase', 'PHASE')}
+                  </span>
                   {lines.slice(1).map((line, i) => (
                     <p key={i} className={line.includes('Milestone:') ? 'milestone-highlight' : 'roadmap-detail'}>
-                      {line.trim()}
+                      {line.trim().replace('- ', '')}
                     </p>
                   ))}
                 </div>
               );
             })}
+          </div>
+
+          {/* RESTART BUTTON */}
+          <div style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '40px' }}>
+            <button 
+              onClick={() => {setStep(1); setResults(null);}} 
+              style={{ padding: '15px 40px', background: 'transparent', color: '#666', border: '1px solid #333', borderRadius: '30px', cursor: 'pointer', fontWeight: 'bold' }}
+              onMouseOver={(e) => { e.target.style.color = '#fff'; e.target.style.borderColor = '#ff4d4d'; }}
+              onMouseOut={(e) => { e.target.style.color = '#666'; e.target.style.borderColor = '#333'; }}
+            >
+              RESTART ASSESSMENT
+            </button>
           </div>
         </div>
       )}
