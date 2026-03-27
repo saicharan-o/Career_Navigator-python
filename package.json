@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "frontend": "cd Frontend && npm start",
-    "backend": "cd Backend && node server.js"
-  },
+  "start-backend": "python ./ml_engine/predict_logic.py",
+  "start-frontend": "cd Frontend && npm start",
+  "dev": "concurrently \"npm run start-backend\" \"npm run start-frontend\""
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saicharan-o/Career_Navigator-python.git"
