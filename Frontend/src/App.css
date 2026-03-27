@@ -36,51 +36,73 @@
     transform: rotate(360deg);
   }
 }
-/* Add this at the very bottom of your App.css */
-
+/* Container for the Grid */
 .career-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
   padding: 20px 0;
-  text-align: left; /* Ensures text inside is aligned left */
 }
 
+/* The Card - Works in both Light and Dark mode */
 .career-card {
-  background: #ffffff;
-  border-left: 6px solid #007bff; /* Blue strip on the left */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  /* Dynamic colors: Dark by default, adjusts to light */
+  background: var(--card-bg, #1e1e1e); 
+  color: var(--card-text, #ffffff);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 5px solid #4facfe; /* Accent strip */
+  padding: 24px;
+  border-radius: 15px;
   cursor: pointer;
+  text-align: left;
   
-  /* CRITICAL: This makes the movement smooth */
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  /* The "Secret Sauce" for the smooth pop-up */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease, 
+              background 0.3s ease;
 }
 
-/* This is what makes it "Pop Up" on mouse over */
+/* POP-UP EFFECT ON HOVER */
 .career-card:hover {
-  transform: translateY(-10px) scale(1.02); /* Moves up and gets slightly bigger */
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Deep shadow for "lifted" look */
-  border-left-color: #00d2ff; /* Color change on hover */
+  transform: translateY(-12px) scale(1.03); /* Lifts up and grows */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Deep shadow */
+  background: #252525;
+  border-color: #00d2ff;
 }
 
+/* Styling for the Phase Title */
 .phase-title {
+  font-size: 1.2rem;
   font-weight: 800;
-  font-size: 1.1rem;
-  color: #1a202c;
-  margin-bottom: 8px;
+  color: #4facfe;
   display: block;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.roadmap-detail {
-  margin: 4px 0;
-  color: #4a5568;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
+/* Milestone highlight */
 .milestone-highlight {
-  color: #2f855a;
+  margin-top: 15px;
+  padding: 8px 12px;
+  background: rgba(5, 150, 105, 0.2);
+  border-radius: 6px;
+  color: #10b981;
   font-weight: bold;
+  font-size: 0.9rem;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Support for Light Theme (if user OS is light) */
+@media (prefers-color-scheme: light) {
+  .career-card {
+    --card-bg: #ffffff;
+    --card-text: #1a202c;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  .career-card:hover {
+    background: #f8fbff;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
 }
