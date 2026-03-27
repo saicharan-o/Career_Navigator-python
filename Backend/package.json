@@ -14,11 +14,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "start": "concurrently \"npm run ai\" \"npm run frontend\"",
+  "ai": "cd ml_engine && python predict_logic.py",
+  "frontend": "cd Frontend && npm start"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
