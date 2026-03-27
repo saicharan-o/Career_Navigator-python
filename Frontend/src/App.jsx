@@ -161,76 +161,71 @@ function App() {
   />
 )}
       {!loading && step === 3 && results && (
-  <div style={{ maxWidth: '800px', margin: '20px auto', textAlign: 'left', padding: '20px', background: '#fff', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-    
-    {/* 1. Header Section */}
-    <div style={{ textAlign: 'center', marginBottom: '30px', borderBottom: '2px solid #f0f0f0', paddingBottom: '20px' }}>
-      <h3 style={{ color: '#666', textTransform: 'uppercase', fontSize: '14px', letterSpacing: '1px' }}>Analysis Complete</h3>
-      <h1 style={{ color: '#007bff', margin: '10px 0' }}>🚀 {results.prediction}</h1>
-      <h2 style={{fontSize: '13px', color: '#718096', backgroundColor: '#edf2f7', padding: '10px 15px', borderRadius: '6px', marginBottom: '20px',borderLeft: '4px solid #a0aec0',lineHeight: '1.4'}}>* This roadmap is intended for guidance purposes only and represents a suggested path based on academic trends.</h2>
-    </div>
-
-    {/* 2. Skill Pillars Section */}
-    <div style={{ marginBottom: '40px' }}>
-      <h4 style={{ color: '#333', marginBottom: '15px' }}>Your Skill Proficiency:</h4>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '15px' }}>
-        {results.pillar_stats && Object.entries(results.pillar_stats).map(([skill, score]) => (
-          <div key={skill} style={{ padding: '15px', background: '#f8f9fa', borderRadius: '8px', border: '1px solid #dee2e6', textAlign: 'center' }}>
-            <div style={{ fontSize: '12px', color: '#6c757d', textTransform: 'capitalize' }}>{skill}</div>
-            <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#333' }}>{Math.round(score)}%</div>
+        /* START OF CINEMATIC RESULTS SECTION */
+        <div className="analysis-container" style={{ backgroundColor: '#0a0a0c', minHeight: '100vh', padding: '40px', borderRadius: '20px' }}>
+          
+          {/* TOP HEADER SECTION */}
+          <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+            <h1 style={{ color: '#fff', fontSize: '3rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '4px' }}>CAREER NAVIGATOR</h1>
+            <h2 style={{ color: '#4facfe', textTransform: 'uppercase', letterSpacing: '2px' }}>🚀 {results.prediction}</h2>
+            <p style={{ color: '#718096', fontSize: '12px', marginTop: '10px' }}>* AI-Generated Professional Roadmap based on NNRG Curriculum</p>
           </div>
-        ))}
-      </div>
-    </div>
 
-   {/* 3. THE ROADMAP SECTION - MODIFIED FOR CARDS */}
-<div style={{ backgroundColor: '#0f0f12', padding: '40px', borderRadius: '20px', color: 'white' }}>
-  <h2 style={{ textTransform: 'uppercase', letterSpacing: '2px', borderBottom: '2px solid #333', paddingBottom: '10px' }}>
-    Zero-to-End Detailed Roadmap
-  </h2>
-
-  {results.roadmap && results.roadmap.length > 0 ? (
-    <div className="career-grid">
-      {results.roadmap.map((phase, index) => {
-        const lines = phase.split('\n');
-        const title = lines[0]; 
-        const details = lines.slice(1);
-
-        return (
-          <div key={index} className="career-card"> 
-            <span className="phase-title">🚀 {title}</span>
-            
-            {details.map((line, i) => {
-              const isMilestone = line.includes('Milestone:');
-              return (
-                <p 
-                  key={i} 
-                  className={isMilestone ? 'milestone-highlight' : 'roadmap-detail'}
-                >
-                  {line.trim().replace('- ', '')}
-                </p>
-              );
-            })}
+          {/* 1. SKILL PROFICIENCY SECTION - NOW IN DARK CARDS */}
+          <h3 className="section-title" style={{ color: '#fff', textTransform: 'uppercase', borderBottom: '2px solid #333', paddingBottom: '10px', marginBottom: '30px' }}>Your Skill Proficiency</h3>
+          <div className="career-grid">
+            {results.pillar_stats && Object.entries(results.pillar_stats).map(([skill, value]) => (
+              <div key={skill} className="skill-card">
+                <p style={{ color: '#888', margin: 0, textTransform: 'uppercase', fontSize: '11px', letterSpacing: '1px' }}>{skill}</p>
+                <h4 style={{ color: '#00ff88', fontSize: '28px', margin: '10px 0', fontWeight: '900' }}>{Math.round(value)}%</h4>
+                <div style={{ width: '100%', height: '6px', background: '#222', borderRadius: '10px', overflow: 'hidden' }}>
+                  <div style={{ width: `${value}%`, height: '100%', background: 'linear-gradient(90deg, #00ff88, #00d2ff)', boxShadow: '0 0 10px #00ff88' }}></div>
+                </div>
+              </div>
+            ))}
           </div>
-        );
-      })}
-    </div>
-  ) : (
-    <p style={{ color: '#ff4d4d' }}>No roadmap steps were generated.</p>
-  )}
-</div>
 
-    {/* 4. Action Button */}
-    <div style={{ textAlign: 'center', marginTop: '40px' }}>
-      <button 
-        onClick={() => {setStep(1); setResults(null);}} 
-        style={{ padding: '12px 35px', backgroundColor: '#6c757d', color: '#fff', border: 'none', borderRadius: '25px', cursor: 'pointer', fontWeight: 'bold' }}
-      >
-        Restart Assessment
-      </button>
-    </div>
-  </div>
-)}
+          {/* 2. ROADMAP SECTION - GRID OF CINEMATIC CARDS WITH POP-UP HOVER */}
+          <h3 className="section-title" style={{ color: '#fff', textTransform: 'uppercase', borderBottom: '2px solid #333', paddingBottom: '10px', marginBottom: '30px', marginTop: '60px' }}>Zero-to-End Detailed Roadmap</h3>
+          <div className="career-grid">
+            {results.roadmap && results.roadmap.length > 0 ? (
+              results.roadmap.map((phase, index) => {
+                const lines = phase.split('\n');
+                const title = lines[0]; 
+                const details = lines.slice(1);
+
+                return (
+                  <div key={index} className="career-card"> 
+                    <span className="phase-title">{title}</span>
+                    {details.map((line, i) => {
+                      const isMilestone = line.includes('Milestone:');
+                      return (
+                        <p key={i} className={isMilestone ? 'milestone-highlight' : 'roadmap-detail'}>
+                          {line.trim().replace('- ', '')}
+                        </p>
+                      );
+                    })}
+                  </div>
+                );
+              })
+            ) : (
+              <p style={{ color: '#ff4d4d' }}>No roadmap steps were generated. Please check backend logic.</p>
+            )}
+          </div>
+
+          {/* 3. RESTART ACTION */}
+          <div style={{ textAlign: 'center', marginTop: '60px' }}>
+            <button 
+              onClick={() => {setStep(1); setResults(null);}} 
+              style={{ padding: '15px 40px', backgroundColor: '#333', color: '#fff', border: '1px solid #444', borderRadius: '30px', cursor: 'pointer', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', transition: '0.3s' }}
+              onMouseOver={(e) => e.target.style.backgroundColor = '#ff4d4d'}
+              onMouseOut={(e) => e.target.style.backgroundColor = '#333'}
+            >
+              Restart Assessment
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
