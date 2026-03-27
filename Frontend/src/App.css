@@ -36,73 +36,58 @@
     transform: rotate(360deg);
   }
 }
-/* Container for the Grid */
+/* Container for the Grid - Exactly like the Car Project */
 .career-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
-  padding: 20px 0;
+  padding: 30px 0;
+  background: #0f0f12; /* Dark background */
 }
 
-/* The Card - Works in both Light and Dark mode */
+/* The Cinematic Card */
 .career-card {
-  /* Dynamic colors: Dark by default, adjusts to light */
-  background: var(--card-bg, #1e1e1e); 
-  color: var(--card-text, #ffffff);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 5px solid #4facfe; /* Accent strip */
-  padding: 24px;
+  background: #1a1a1f; /* Slightly lighter dark */
+  color: white;
+  padding: 25px;
   border-radius: 15px;
+  border-bottom: 3px solid #ff4d4d; /* That red accent from your car cards */
   cursor: pointer;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
   text-align: left;
-  
-  /* The "Secret Sauce" for the smooth pop-up */
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-              box-shadow 0.4s ease, 
-              background 0.3s ease;
 }
 
-/* POP-UP EFFECT ON HOVER */
+/* THE POP-UP ANIMATION */
 .career-card:hover {
-  transform: translateY(-12px) scale(1.03); /* Lifts up and grows */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Deep shadow */
-  background: #252525;
-  border-color: #00d2ff;
+  transform: translateY(-15px) scale(1.03); /* Lifts up high */
+  box-shadow: 0 15px 35px rgba(255, 77, 77, 0.3); /* Red glow */
+  background: #25252b;
 }
 
-/* Styling for the Phase Title */
 .phase-title {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: #4facfe;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 15px;
   display: block;
-  margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* Milestone highlight */
-.milestone-highlight {
-  margin-top: 15px;
-  padding: 8px 12px;
-  background: rgba(5, 150, 105, 0.2);
-  border-radius: 6px;
-  color: #10b981;
-  font-weight: bold;
-  font-size: 0.9rem;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+.roadmap-detail {
+  color: #b0b0b0;
+  font-size: 14px;
+  margin: 10px 0;
+  line-height: 1.6;
 }
 
-/* Support for Light Theme (if user OS is light) */
-@media (prefers-color-scheme: light) {
-  .career-card {
-    --card-bg: #ffffff;
-    --card-text: #1a202c;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  }
-  .career-card:hover {
-    background: #f8fbff;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-  }
+.milestone-highlight {
+  color: #00ff88; /* Bright green for Milestones like your car prices */
+  font-weight: bold;
+  font-size: 15px;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  margin-top: 15px;
+  display: block;
 }
