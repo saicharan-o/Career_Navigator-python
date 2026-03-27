@@ -1,9 +1,13 @@
-import sys
-import json
 import pandas as pd
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from sklearn.ensemble import RandomForestClassifier
 
-G_P={'O':10,'A+':9,'A':8,'B+':7,'B':6,'C':5,'P':4,'F': 0}
+app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+# 1. Essential Data Structures (Missing in your version)
+G_P = {'O': 10, 'A+': 9, 'A': 8, 'B+': 7, 'B': 6, 'C': 5, 'P': 4, 'F': 0}
 
 PILLARS = {
     'coding': ['programming', 'java', 'python', 'data structures', 'node', 'react', 'django', 'prolog', 'lisp', 'pyswip', 'problem solving', 'lab', 'software', 'flutter', 'ui design', 'algorithms'],
@@ -207,65 +211,69 @@ def train_m():
    model = RandomForestClassifier(n_estimators=500, random_state=42)
    model.fit(d.drop('target', axis=1), d['target'])
    return model
+
+
+GLOBAL_MODEL = train_m()
+
 def predict_career(user_data):
-    model = train_m()
-    pillar_scores = {k: [] for k in PILLARS}
- 
-    branch = user_data.get('branch')
     grades = user_data.get('grades', {})
+    pillar_scores = {k: [] for k in PILLARS}
+
+    if not grades:
+        return {"error": "No grades provided"}
 
     for sub, grade in grades.items():
-        if grade in G_P:
-            score = G_P[grade] * 10
-            
-            found = False
-            for p_key, keywords in PILLARS.items():
-                if any(k in sub.lower() for k in keywords):
-                    pillar_scores[p_key].append(score)
-                    found = True
-                    break 
-            
-            if not found:
-                pillar_scores['theory'].append(score)
-        else:
-            continue 
+        # IMPORTANT: Convert subject to lowercase for better matching
+        sub_lower = sub.lower()
+        grade_val = int(grade) if str(grade).isdigit() else G_P.get(str(grade), 0)
+        
+        # Convert 0-10 grade to 0-100 percentage
+        score = grade_val * 10 
+        
+        found = False
+        for p_key, keywords in PILLARS.items():
+            if any(k in sub_lower for k in keywords):
+                pillar_scores[p_key].append(score)
+                found = True
+                break
+        
+        if not found:
+            pillar_scores['theory'].append(score)
 
-    final_averages = [sum(pillar_scores[p]) / len(pillar_scores[p]) if pillar_scores[p] else 0 for p in PILLARS]
+    # Calculate averages
+    final_stats = {}
+    for p in PILLARS.keys():
+        avg = sum(pillar_scores[p]) / len(pillar_scores[p]) if pillar_scores[p] else 0
+        final_stats[p] = round(avg, 2)
     
-    total_avg_percentage = (sum(final_averages) / len(PILLARS)) if PILLARS else 0
+    # Prepare data for model
+    # The order MUST match the training data order
+    input_features = [final_stats[p] for p in [
+        'coding', 'math', 'hardware', 'systems', 'theory', 
+        'science', 'design', 'mechanical_core', 'civil_core'
+    ]]
     
-    if sum(final_averages) == 0:
-        return {
-            "status": "FAIL",
-            "message": "Your score is 0. You need to improve and focus on academics."
-        }
+    prediction = GLOBAL_MODEL.predict([input_features])[0]
     
-    elif total_avg_percentage < 35:
-        return {
-            "status": "RESTRICTED",
-            "prediction": "Not Eligible Yet",
-            "message": "Academic Alert: Your current scoring is too low for a professional roadmap. Focus on strengthening your core subjects and improving your CGPA first.",
-            "pillar_stats": dict(zip(PILLARS.keys(), final_averages))
-        }
-    
-    else:
-        prediction = model.predict(pd.DataFrame([final_averages], columns=PILLARS.keys()))[0]
-        return {
-            "status": "SUCCESS",
-            "prediction": prediction,
-            "roadmap": ROADMAPS.get(prediction, []),
-            "pillar_stats": dict(zip(PILLARS.keys(), final_averages))
-        }
-if __name__ == "__main__":
- 
+    return {
+        "prediction": prediction,
+        "roadmap": ROADMAPS.get(prediction, ["Focus on core engineering fundamentals", "Build a project portfolio"]),
+        "pillar_stats": final_stats 
+    }
+
+@app.route('/predict', methods=['POST', 'OPTIONS'])
+def predict():
+    if request.method == 'OPTIONS':
+        return jsonify({"status": "ok"}), 200
     try:
-        input_json = sys.argv[1]
-        user_data = json.loads(input_json)
-        
-        final_output = predict_career(user_data)
-        
-        print(json.dumps(final_output))
-        
+        user_data = request.json
+        print(f"Analyzing data for: {user_data.get('branch')}")
+        result = predict_career(user_data)
+        return jsonify(result)
     except Exception as e:
-        error_result = {"status": "FAIL", "message": str(e)}
-        print(json.dumps(error_result))    
+        print(f"Error: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    print("AI ML Engine Online on Port 5000")
+    app.run(host='127.0.0.1', port=5000, debug=False)
