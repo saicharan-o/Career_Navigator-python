@@ -36,7 +36,7 @@
     transform: rotate(360deg);
   }
 }
-/* Force the entire background to be dark from start to finish */
+
 html, body, #root {
   background-color: #0a0a0c !important; 
   color: #e0e0e0;
@@ -45,14 +45,12 @@ html, body, #root {
   min-height: 100vh;
 }
 
-/* Container for the form and results */
 .main-wrapper {
   background-color: #0a0a0c;
   min-height: 100vh;
   padding: 40px 20px;
 }
 
-/* Form Styles - Dark Input look */
 select, button, input {
   background: #1a1a1f !important;
   color: white !important;
@@ -60,7 +58,6 @@ select, button, input {
   border-radius: 8px;
 }
 
-/* GRID SYSTEM - EXACTLY LIKE CAR PROJECT */
 .career-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -68,21 +65,19 @@ select, button, input {
   padding: 20px 0;
 }
 
-/* THE CINEMATIC CARD - WITH THE POP-UP EFFECT */
 .career-card, .skill-card {
   background: #16161a;
   border: 1px solid #2a2a2e;
   border-radius: 16px;
   padding: 25px;
-  border-bottom: 4px solid #ff4d4d; /* Red accent from car project */
+  border-bottom: 4px solid #ff4d4d;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
 }
 
-/* HOVER ANIMATION - HIGHLIGHTS AND LIFTS UPWARDS */
 .career-card:hover, .skill-card:hover {
-  transform: translateY(-15px) scale(1.03); /* Lifts upwards like the car cards */
-  box-shadow: 0 20px 40px rgba(255, 77, 77, 0.25); /* Glowing highlight */
+  transform: translateY(-15px) scale(1.03); 
+  box-shadow: 0 20px 40px rgba(255, 77, 77, 0.25); 
   border-color: #ff4d4d;
 }
 
@@ -101,7 +96,7 @@ select, button, input {
 }
 
 .milestone-highlight {
-  color: #00ff88; /* Bright green like car prices */
+  color: #00ff88; 
   background: rgba(0, 255, 136, 0.1);
   padding: 8px;
   border-radius: 4px;
