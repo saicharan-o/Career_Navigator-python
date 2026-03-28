@@ -33,5 +33,5 @@ app.post('/api/predict', (req, res) => {
         }
     });
 });
-const PORT = 5001; // Change from 5000 to 5001
+const PORT = 5001; 
 app.listen(PORT, () => console.log(`Node Server running on port ${PORT}`));
