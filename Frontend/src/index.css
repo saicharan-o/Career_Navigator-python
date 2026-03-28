@@ -15,7 +15,6 @@ button{
   display: inline;
   position: center;
 }
-/* Makes the scrollbar dark and sleek like a sports car interface */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -27,5 +26,5 @@ button{
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff4d4d; /* Glows red when you scroll */
+  background: #ff4d4d; 
 }
