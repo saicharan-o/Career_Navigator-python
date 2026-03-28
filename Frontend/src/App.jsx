@@ -130,22 +130,20 @@ function App() {
     doc.save(`${results.prediction}_Roadmap.pdf`);
   };
 
-// 2. Update the handleGradeSubmit function
 const handleGradeSubmit = async (grades) => {
-    // Check if no grades were entered at all
+   
     if (Object.keys(grades).length === 0) {
         setMessage("⚠️ Please enter your grades before generating a roadmap.");
         return;
     }
 
-    // Check if any grade was left as "Grade" (empty string)
     const hasEmptyGrade = Object.values(grades).some(g => g === "");
     if (hasEmptyGrade) {
         setMessage("⚠️ Some subjects are missing grades. Please fill them all correctly.");
         return;
     }
 
-    setMessage(""); // Clear message if everything is okay
+    setMessage(""); 
     setLoading(true);
 
     try {
@@ -270,7 +268,6 @@ const handleGradeSubmit = async (grades) => {
               ))}
             </div>
 
-            {/* --- UPDATED BUTTON GROUP --- */}
             <div style={{ display: 'flex', gap: '15px', marginTop: '40px' }}>
               <button
                 onClick={downloadPDF}
