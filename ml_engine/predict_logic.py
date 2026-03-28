@@ -6,7 +6,6 @@ from sklearn.ensemble import RandomForestClassifier
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# 1. Essential Data Structures (Missing in your version)
 G_P = {'O': 10, 'A+': 9, 'A': 8, 'B+': 7, 'B': 6, 'C': 5, 'P': 4, 'F': 0}
 
 PILLARS = {
@@ -223,11 +222,9 @@ def predict_career(user_data):
         return {"error": "No grades provided"}
 
     for sub, grade in grades.items():
-        # IMPORTANT: Convert subject to lowercase for better matching
         sub_lower = sub.lower()
         grade_val = int(grade) if str(grade).isdigit() else G_P.get(str(grade), 0)
         
-        # Convert 0-10 grade to 0-100 percentage
         score = grade_val * 10 
         
         found = False
@@ -240,14 +237,11 @@ def predict_career(user_data):
         if not found:
             pillar_scores['theory'].append(score)
 
-    # Calculate averages
     final_stats = {}
     for p in PILLARS.keys():
         avg = sum(pillar_scores[p]) / len(pillar_scores[p]) if pillar_scores[p] else 0
         final_stats[p] = round(avg, 2)
     
-    # Prepare data for model
-    # The order MUST match the training data order
     input_features = [final_stats[p] for p in [
         'coding', 'math', 'hardware', 'systems', 'theory', 
         'science', 'design', 'mechanical_core', 'civil_core'
