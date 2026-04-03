@@ -21,15 +21,6 @@ PILLARS = {
 }
 
 BRANCH_SYLLABUS = {
-    "CSE": {
-        "Sem 1": ["Matrices and Calculus", "Engineering Chemistry", "Programming for Problem Solving", "Basic Electrical Engineering", "Computer Aided Engineering Graphics", "Elements of Computer Science & Engineering", "Engineering Chemistry Laboratory", "Programming for Problem Solving Laboratory", "Basic Electrical Engineering Laboratory"],
-        "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Applied Physics", "Engineering Workshop", "English for Skill Enhancement", "Electronic Devices and Circuits", "Applied Physics Laboratory", "Python Programming Laboratory", "English Language and Communication Skills Laboratory", "IT Workshop"],
-        "Sem 3": ["Digital Logic Design", "Data Structures", "Computer Oriented Statistical Methods", "Business Economics & Financial Analysis", "Object Oriented Programming through Java", "Data Structures Lab", "Object Oriented Programming through Java Lab", "Gender Sensitization Lab", "Skill Development Course (Data visualization- R Programming/ Power BI)"],
-        "Sem 4": ["Discrete Mathematics", "Computer Organization and Architecture", "Operating Systems", "Database Management Systems", "Software Engineering", "Operating Systems Lab", "Database Management Systems Lab", "Real-time Research Project / Societal Related Project", "Constitution of India", "Skill Development Course (Node JS / React JS / Django)"],
-        "Sem 5": ["Design and Analysis of Algorithms", "Computer Networks", "DevOps", "Professional Elective-I", "Professional Elective-II", "Computer Networks Lab", "DevOps Lab", "Advanced English Communication Skills Lab", "Intellectual Property Rights", "Skill Development Course"],
-        "Sem 6": ["Machine Learning", "Formal Languages and Automata Theory", "Artificial Intelligence", "Professional Elective – III", "Open Elective-I", "Machine Learning Lab", "Artificial Intelligence Lab", "Professional Elective-III Lab", "Industrial Oriented Mini Project/ Internship/ Skill Development Course", "Environmental Science"],
-        "Sem 7": ["Cryptography and Network Security", "Compiler Design", "Professional Elective -IV", "Professional Elective -V", "Open Elective - II", "Cryptography and Network Security Lab", "Compiler Design Lab", "Project Stage - I"]
-    },
     "CSE AI-ML": {
         "Sem 1": ["Matrices and Calculus", "Applied Physics", "Programming for Problem Solving", "Engineering Workshop", "English for Skill Enhancement", "Elements of Computer Science & Engineering", "Applied Physics Laboratory", "Programming for Problem Solving Laboratory", "English Language and Communication Skills Laboratory"],
         "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Engineering Chemistry", "Computer Aided Engineering Graphics", "Basic Electrical Engineering", "Electronic Devices and Circuits", "Engineering Chemistry Laboratory", "Python Programming Laboratory", "Basic Electrical Engineering Laboratory", "IT Workshop"],
