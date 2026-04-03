@@ -14,7 +14,6 @@ const YEAR_SEMESTER_MAP = {
   "4-2": ["Sem 1", "Sem 2", "Sem 3", "Sem 4", "Sem 5", "Sem 6", "Sem 7"]
 };
 
-
 const BRANCH_SYLLABUS = {
     "CSE": {
         "Sem 1": ["Matrices and Calculus", "Engineering Chemistry", "Programming for Problem Solving", "Basic Electrical Engineering", "Computer Aided Engineering Graphics", "Elements of Computer Science & Engineering", "Engineering Chemistry Laboratory", "Programming for Problem Solving Laboratory", "Basic Electrical Engineering Laboratory"],
@@ -285,7 +284,6 @@ const handleGradeSubmit = async (grades) => {
     </div>
   );
 }
-
 const selectStyle = { width: '100%', padding: '15px', background: '#050505', color: '#fff', border: '1px solid #333', borderRadius: '8px', marginBottom: '20px' };
 const buttonStyle = { width: '100%', padding: '18px', background: '#ff4d4d', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', letterSpacing: '2px' };
 
