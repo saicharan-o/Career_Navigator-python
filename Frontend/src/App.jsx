@@ -107,7 +107,6 @@ function App() {
     const splitDisclaimer = doc.splitTextToSize(disclaimer, pageWidth - 40);
     doc.text(splitDisclaimer, 20, 45);
 
-    // Roadmap Content
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 0);
     let cursorY = 65;
