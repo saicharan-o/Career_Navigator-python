@@ -93,7 +93,6 @@ function App() {
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
 
-    // Title
     doc.setFontSize(22);
     doc.setTextColor(79, 172, 254);
     doc.text("CAREER NAVIGATION ROADMAP", pageWidth / 2, 20, { align: "center" });
