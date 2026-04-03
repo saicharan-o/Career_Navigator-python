@@ -101,7 +101,6 @@ function App() {
     doc.setTextColor(0, 255, 136);
     doc.text(`Predicted Role: ${results.prediction}`, pageWidth / 2, 35, { align: "center" });
 
-    // Disclaimer
     doc.setFontSize(10);
     doc.setTextColor(100, 100, 100);
     const disclaimer = "Disclaimer: This roadmap is for guidance purposes only and based on academic data analysis. It is not a guaranteed career path.";
