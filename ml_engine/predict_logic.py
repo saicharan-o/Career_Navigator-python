@@ -21,15 +21,6 @@ PILLARS = {
 }
 
 BRANCH_SYLLABUS = {
-    "CSE AI-ML": {
-        "Sem 1": ["Matrices and Calculus", "Applied Physics", "Programming for Problem Solving", "Engineering Workshop", "English for Skill Enhancement", "Elements of Computer Science & Engineering", "Applied Physics Laboratory", "Programming for Problem Solving Laboratory", "English Language and Communication Skills Laboratory"],
-        "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Engineering Chemistry", "Computer Aided Engineering Graphics", "Basic Electrical Engineering", "Electronic Devices and Circuits", "Engineering Chemistry Laboratory", "Python Programming Laboratory", "Basic Electrical Engineering Laboratory", "IT Workshop"],
-        "Sem 3": ["Discrete Mathematics", "Data Structures", "Operating Systems", "Computer Organization and Architecture", "Software Engineering", "Data Structures Lab", "Operating Systems Lab", "Software Engineering Lab", "Constitution of India", "Skill Development Course (Node JS / React JS / Django)"],
-        "Sem 4": ["Mathematical and Statistical Foundations", "Automata Theory and Compiler Design", "Introduction to Artificial Intelligence", "Database Management Systems", "Object Oriented Programming through Java", "Java Programming Lab", "Database Management Systems Lab", "Real-time Research Project/Field-Based Research Project", "Gender Sensitization Lab", "Skill Development Course (Prolog/ Lisp/ Pyswip)"],
-        "Sem 5": ["Design and Analysis of Algorithms", "Computer Networks", "Machine Learning", "Business Economics & Financial Analysis", "Professional Elective-I", "Computer Networks Lab", "Machine Learning Lab", "Advanced English Communication Skills lab", "Intellectual Property Rights", "Skill Development Course"],
-        "Sem 6": ["Knowledge Representation and Reasoning", "Data Analytics", "Natural Language Processing", "Professional Elective – II", "Open Elective-I", "Natural Language Processing Lab", "Data Analytics Lab", "Industrial Oriented Mini Project/ Internship/ Skill Development Course", "Environmental Science"],
-        "Sem 7": ["Deep Learning", "Nature Inspired Computing", "Professional Elective -III", "Professional Elective -IV", "Open Elective - II", "Professional Practice, Law & Ethics", "Professional Elective - III Lab", "Project Stage - I"]
-    },
     "CSE IT": {
         "Sem 1": ["Matrices and Calculus", "Engineering Chemistry", "Programming for Problem Solving", "Basic Electrical Engineering", "Computer Aided Engineering Graphics", "Elements of Computer Science & Engineering", "Engineering Chemistry Laboratory", "Programming for Problem Solving Laboratory", "Basic Electrical Engineering Laboratory"],
         "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Applied Physics", "Engineering Workshop", "English for Skill Enhancement", "Electronic Devices and Circuits", "Applied Physics Laboratory", "Python Programming Laboratory", "English Language and Communication Skills Laboratory", "IT Workshop"],
