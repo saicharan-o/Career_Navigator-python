@@ -211,9 +211,7 @@ def train_m():
    model.fit(d.drop('target', axis=1), d['target'])
    return model
 
-
 GLOBAL_MODEL = train_m()
-
 def predict_career(user_data):
     grades = user_data.get('grades', {})
     pillar_scores = {k: [] for k in PILLARS}
