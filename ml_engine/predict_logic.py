@@ -15,7 +15,7 @@ PILLARS = {
     'systems': ['database', 'dbms', 'operating systems', 'visualization', 'r programming', 'power bi', 'sql', 'organization', 'architecture', 'network analysis', 'simulation', 'networks', 'cryptography', 'security', 'compiler', 'big data', 'cloud', 'spark', 'information security'],
     'theory': ['economics', 'befa', 'english', 'sensitization', 'constitution', 'ethics', 'management', 'gender', 'skill enhancement', 'induction', 'societal', 'rights', 'intellectual property', 'professional practice'],
     'science': ['chemistry', 'physics', 'environmental', 'geology', 'biology'],
-    'design': ['graphics', 'workshop', 'cad', 'cam', 'drawing', 'metrology', 'modelling'], # Removed 'research'
+    'design': ['graphics', 'workshop', 'cad', 'cam', 'drawing', 'metrology', 'modelling'],
     'mechanical_core': ['thermodynamics', 'mechanics', 'metallurgy', 'production', 'thermal', 'kinematics', 'machine members', 'heat transfer', 'refrigeration', 'dynamics'],
     'civil_core': ['surveying', 'concrete', 'structural', 'geotechnical', 'transportation', 'hydrology', 'foundation'] # Removed 'survey' to avoid confusion
 }
