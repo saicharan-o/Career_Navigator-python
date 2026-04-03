@@ -17,7 +17,7 @@ PILLARS = {
     'science': ['chemistry', 'physics', 'environmental', 'geology', 'biology'],
     'design': ['graphics', 'workshop', 'cad', 'cam', 'drawing', 'metrology', 'modelling'],
     'mechanical_core': ['thermodynamics', 'mechanics', 'metallurgy', 'production', 'thermal', 'kinematics', 'machine members', 'heat transfer', 'refrigeration', 'dynamics'],
-    'civil_core': ['surveying', 'concrete', 'structural', 'geotechnical', 'transportation', 'hydrology', 'foundation'] # Removed 'survey' to avoid confusion
+    'civil_core': ['surveying', 'concrete', 'structural', 'geotechnical', 'transportation', 'hydrology', 'foundation']
 }
 
 BRANCH_SYLLABUS = {
