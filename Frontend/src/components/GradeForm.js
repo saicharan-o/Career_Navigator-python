@@ -53,9 +53,10 @@ const GradeForm = ({ branch, currentYear, yearMap, syllabusMap, onSubmit }) => {
       </div>
       <button 
         onClick={() => onSubmit(grades)} 
-        style={{ width: '100%', padding: '18px', background: '#00ff88', color: '#000', border: 'none', borderRadius: '8px', fontWeight: '900', marginTop: '20px', cursor: 'pointer' }}
-      >
+        style={{ width: '100%', padding: '18px', background: '#00ff88', color: '#000', border: 'none', borderRadius: '8px', fontWeight: '900', marginTop: '20px', cursor: 'pointer' }}>
+        
         GENERATE ROADMAP →
+        
       </button>
     </div>
   );
