@@ -97,7 +97,6 @@ function App() {
     doc.setTextColor(79, 172, 254);
     doc.text("CAREER NAVIGATION ROADMAP", pageWidth / 2, 20, { align: "center" });
 
-    // Prediction
     doc.setFontSize(16);
     doc.setTextColor(0, 255, 136);
     doc.text(`Predicted Role: ${results.prediction}`, pageWidth / 2, 35, { align: "center" });
