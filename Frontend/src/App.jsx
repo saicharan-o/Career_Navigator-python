@@ -127,6 +127,12 @@ function App() {
 
 const handleGradeSubmit = async (grades) => {
    
+    // // --- NEW CHECK START ---
+    // if (currentYear === "1-1") {
+    //     setMessage("👋 You have just started your journey! Please try this tool after completing your first semester to get an accurate career prediction.");
+    //     return;
+    // }
+    // // --- NEW CHECK END ---
     if (Object.keys(grades).length === 0) {
         setMessage("⚠️ Please enter your grades before generating a roadmap.");
         return;
@@ -173,18 +179,43 @@ const handleGradeSubmit = async (grades) => {
 
         {!loading && step < 3 && (
           <div style={{ background: '#111116', padding: '40px', borderRadius: '15px', border: '1px solid #1e1e24' }}>
-            {step === 1 ? (
-              <div style={{ textAlign: 'center' }}>
+    {step === 1 ? (
+      <div style={{ textAlign: 'center' }}>
+        {/* ADD THIS MESSAGE BOX HERE */}
+        {message && (
+          <div style={{
+            background: 'rgba(79, 172, 254, 0.1)',
+            color: '#4facfe', padding: '15px', borderRadius: '8px',
+            marginBottom: '20px', border: '1px solid #4facfe',
+            textAlign: 'center', fontWeight: 'bold'
+          }}>
+            {message}
+          </div>
+        )}
                 <h2 style={{ letterSpacing: '2px', marginBottom: '30px' }}>SELECT SPECIALIZATION</h2>
-                <select value={currentYear} onChange={(e) => setCurrentYear(e.target.value)} style={selectStyle}>
-                  {Object.keys(YEAR_SEMESTER_MAP).map(y => <option key={y} value={y}>{y}</option>)}
-                </select>
-                <select value={branch} onChange={(e) => setBranch(e.target.value)} style={selectStyle}>
-                  {Object.keys(BRANCH_SYLLABUS).map(b => <option key={b} value={b}>{b}</option>)}
-                </select>
-                <button onClick={() => setStep(2)} style={buttonStyle}>INITIALIZE →</button>
-              </div>
-            ) : (
+        <select value={currentYear} onChange={(e) => setCurrentYear(e.target.value)} style={selectStyle}>
+          {Object.keys(YEAR_SEMESTER_MAP).map(y => <option key={y} value={y}>{y}</option>)}
+        </select>
+        <select value={branch} onChange={(e) => setBranch(e.target.value)} style={selectStyle}>
+          {Object.keys(BRANCH_SYLLABUS).map(b => <option key={b} value={b}>{b}</option>)}
+        </select>
+
+        {/* UPDATE THIS BUTTON HERE */}
+        <button 
+          onClick={() => {
+            if (currentYear === "1-1") {
+              setMessage("🚀 You've just started your journey! Please wait until you complete your first semester to use the Career Navigator.");
+            } else {
+              setMessage(""); 
+              setStep(2);
+            }
+          }} 
+          style={buttonStyle}
+        >
+          INITIALIZE →
+        </button>
+      </div>
+    ) : (
               <div>
                 {message && (
                   <div style={{
