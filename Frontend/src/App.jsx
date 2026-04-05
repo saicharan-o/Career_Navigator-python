@@ -126,8 +126,6 @@ function App() {
   };
 
 const handleGradeSubmit = async (grades) => {
-    // }
-    // // --- NEW CHECK END ---
     if (Object.keys(grades).length === 0) {
         setMessage("⚠️ Please enter your grades before generating a roadmap.");
         return;
