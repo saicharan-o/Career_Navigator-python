@@ -192,7 +192,6 @@ const handleGradeSubmit = async (grades) => {
           {Object.keys(BRANCH_SYLLABUS).map(b => <option key={b} value={b}>{b}</option>)}
         </select>
 
-        {/* UPDATE THIS BUTTON HERE */}
         <button 
           onClick={() => {
             if (currentYear === "1-1") {
