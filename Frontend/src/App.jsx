@@ -126,7 +126,6 @@ function App() {
   };
 
 const handleGradeSubmit = async (grades) => {
-    // if (currentYear === "1-1") {
     //     setMessage("👋 You have just started your journey! Please try this tool after completing your first semester to get an accurate career prediction.");
     //     return;
     // }
