@@ -21,15 +21,6 @@ PILLARS = {
 }
 
 BRANCH_SYLLABUS = {
-    "CSE IT": {
-        "Sem 1": ["Matrices and Calculus", "Engineering Chemistry", "Programming for Problem Solving", "Basic Electrical Engineering", "Computer Aided Engineering Graphics", "Elements of Computer Science & Engineering", "Engineering Chemistry Laboratory", "Programming for Problem Solving Laboratory", "Basic Electrical Engineering Laboratory"],
-        "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Applied Physics", "Engineering Workshop", "English for Skill Enhancement", "Electronic Devices and Circuits", "Applied Physics Laboratory", "Python Programming Laboratory", "English Language and Communication Skills Laboratory", "IT Workshop"],
-        "Sem 3": ["Digital Logic Design", "Data Structures", "Computer Oriented Statistical Methods", "Computer Organization and Microprocessor", "Introduction to IoT", "Digital Logic Design Lab", "Data Structures Lab", "Internet of Things Lab", "Gender Sensitization Lab", "Skill Development Course (Data visualization- R Programming/ Power BI)"],
-        "Sem 4": ["Discrete Mathematics", "Business Economics & Financial Analysis", "Operating Systems", "Database Management Systems", "Java Programming", "Operating Systems Lab", "Database Management Systems Lab", "Java Programming Lab", "Real-time Research Project/ Societal Related Project", "Constitution of India", "Skill Development Course (Node JS/ React JS/ Django)"],
-        "Sem 5": ["Software Engineering", "Data Communications and Computer Networks", "Machine Learning", "Professional Elective – I", "Professional Elective – II", "Software Engineering & Computer Networks Lab", "Machine Learning Lab", "Advanced Communication Skills Lab", "Intellectual Property Rights", "Skill Development Course (UI design- Flutter)"],
-        "Sem 6": ["Automata Theory and Compiler Design", "Algorithm Design and Analysis", "Embedded Systems", "Compiler Design Lab", "Professional Elective – III", "Open Elective-I", "Embedded Systems Lab", "Professional Elective-III Lab", "Industrial Oriented Mini Project/ Internship/ Skill Development Course (Big data-Spark)", "Environmental Science"],
-        "Sem 7": ["Information Security", "Cloud Computing", "Professional Elective - IV", "Professional Elective - V", "Open Elective-II", "Information Security Lab", "Cloud Computing Lab", "Project Stage - I"]
-    },
     "CSE Data Science": {
         "Sem 1": ["Matrices and Calculus", "Engineering Chemistry", "Programming for Problem Solving", "Basic Electrical Engineering", "Computer Aided Engineering Graphics", "Elements of Computer Science & Engineering", "Engineering Chemistry Laboratory", "Programming for Problem Solving Laboratory", "Basic Electrical Engineering Laboratory"],
         "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Applied Physics", "Engineering Workshop", "English for Skill Enhancement", "Electronic Devices and Circuits", "Applied Physics Laboratory", "Python Programming Laboratory", "English Language and Communication Skills Laboratory", "IT Workshop"],
