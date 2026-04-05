@@ -126,7 +126,6 @@ function App() {
   };
 
 const handleGradeSubmit = async (grades) => {
-    //     return;
     // }
     // // --- NEW CHECK END ---
     if (Object.keys(grades).length === 0) {
