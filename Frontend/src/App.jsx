@@ -174,7 +174,6 @@ const handleGradeSubmit = async (grades) => {
           <div style={{ background: '#111116', padding: '40px', borderRadius: '15px', border: '1px solid #1e1e24' }}>
     {step === 1 ? (
       <div style={{ textAlign: 'center' }}>
-        {/* ADD THIS MESSAGE BOX HERE */}
         {message && (
           <div style={{
             background: 'rgba(79, 172, 254, 0.1)',
