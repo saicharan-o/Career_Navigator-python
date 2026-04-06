@@ -21,15 +21,6 @@ PILLARS = {
 }
 
 BRANCH_SYLLABUS = {
-    "Mechanical": {
-        "Sem 1": ["Mathematics - I", "Engineering Physics", "Programming for Problem Solving", "Engineering Graphics", "Engineering Physics Lab", "Programming for Problem Solving Lab", "Environmental Science", "Induction Programme"],
-        "Sem 2": ["Mathematics - II", "Chemistry", "Engineering Mechanics", "Engineering Workshop", "English", "Engineering Chemistry Lab", "English Language and Communication Skills Lab"],
-        "Sem 3": ["Probability and Statistics & Complex Variables", "Mechanics of Solids", "Material Science and Metallurgy", "Production Technology", "Thermodynamics", "Production Technology Lab", "Machine Drawing Practice", "Material Science and Mechanics of Solids Lab", "Constitution of India"],
-        "Sem 4": ["Basic Electrical and Electronics Engineering", "Kinematics of Machinery", "Thermal Engineering – I", "Fluid Mechanics and Hydraulic Machines", "Instrumentation and Control Systems", "Basic Electrical and Electronics Engineering Lab", "Fluid Mechanics and Hydraulic Machines Lab", "Instrumentation and Control Systems Lab", "Gender Sensitization Lab"],
-        "Sem 5": ["Dynamics of Machinery", "Design of Machine Members-I", "Metrology & Machine Tools", "Business Economics & Financial Analysis", "Thermal Engineering-II", "Operations Research", "Thermal Engineering Lab", "Metrology & Machine Tools Lab", "Kinematics & Dynamics Lab", "Intellectual Property Rights"],
-        "Sem 6": ["Design of Machine Members-II", "Heat Transfer", "CAD & CAM", "Professional Elective - I", "Open Elective - I", "Finite Element Methods", "Heat Transfer Lab", "CAD & CAM Lab", "Advanced Communication Skills lab", "Environmental Science"],
-        "Sem 7": ["Refrigeration & Air Conditioning", "Professional Elective – II", "Professional Elective – III", "Professional Elective - IV", "Open Elective - II", "Industrial Oriented Mini Project/ Summer Internship", "Seminar", "Project Stage - I"]
-    },
     "Civil": {
         "Sem 1": ["Matrices and Calculus", "Applied Physics", "Programming for Problem Solving", "Engineering Workshop", "English for Skill Enhancement", "Elements of Civil Engineering", "Applied Physics Laboratory", "English Language and Communication Skills Laboratory", "Programming for Problem Solving Laboratory", "Induction Programme"],
         "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Engineering Chemistry", "Computer Aided Engineering Graphics", "Applied Mechanics", "Surveying", "Python Programming Laboratory", "Engineering Chemistry Laboratory", "Surveying Laboratory – I"],
