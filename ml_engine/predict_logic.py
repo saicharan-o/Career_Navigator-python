@@ -21,15 +21,6 @@ PILLARS = {
 }
 
 BRANCH_SYLLABUS = {
-    "CSE Data Science": {
-        "Sem 1": ["Matrices and Calculus", "Engineering Chemistry", "Programming for Problem Solving", "Basic Electrical Engineering", "Computer Aided Engineering Graphics", "Elements of Computer Science & Engineering", "Engineering Chemistry Laboratory", "Programming for Problem Solving Laboratory", "Basic Electrical Engineering Laboratory"],
-        "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Applied Physics", "Engineering Workshop", "English for Skill Enhancement", "Electronic Devices and Circuits", "Applied Physics Laboratory", "Python Programming Laboratory", "English Language and Communication Skills Laboratory", "IT Workshop"],
-        "Sem 3": ["Digital Logic Design", "Data Structures", "Computer Oriented Statistical Methods", "Computer Organization and Architecture", "Object Oriented Programming through Java", "Data Structures Lab", "Object Oriented Programming through Java Lab", "Gender Sensitization Lab", "Skill Development Course (Data visualization- R Programming/ Power BI)"],
-        "Sem 4": ["Discrete Mathematics", "Business Economics & Financial Analysis", "Operating Systems", "Database Management Systems", "Software Engineering", "Operating Systems Lab", "Database Management Systems Lab", "Real-time Research Project/ Societal Related Project", "Constitution of India", "Skill Development Course (Node JS/ React JS/ Django)"],
-        "Sem 5": ["Machine Learning", "Introduction to Data Science", "Computer Networks", "Professional Elective - I", "Professional Elective - II", "Machine Learning Lab", "R Programming Lab", "Computer Networks Lab", "Intellectual Property Rights", "Skill Development Course"],
-        "Sem 6": ["Automata Theory and Compiler Design", "Algorithm Design and Analysis", "Big Data Analytics", "Professional Elective – III", "Open Elective - I", "Big Data Analytics Lab", "Professional Elective - III Lab", "Advanced English Communication Skills Lab", "Environmental Science", "Industrial Oriented Mini Project/ Summer Internship/ Skill Development Course"],
-        "Sem 7": ["Predictive Analytics", "Web and Social Media Analytics", "Professional Elective – IV", "Professional Elective – V", "Open Elective – II", "Predictive Analytics Lab", "Web and Social Media Analytics Lab", "Project Stage – I"]
-    },
     "ECE": {
         "Sem 1": ["Matrices and Calculus", "Applied Physics", "Programming for Problem Solving", "Engineering Workshop", "English for Skill Enhancement", "Elements of Electronics and Communication Engineering", "Applied Physics Laboratory", "English Language and Communication Skills Laboratory", "Programming for Problem Solving Laboratory", "Induction Programme"],
         "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Engineering Chemistry", "Computer Aided Engineering Graphics", "Basic Electrical Engineering", "Electronic Devices and Circuits", "Applied Python Programming Laboratory", "Engineering Chemistry Laboratory", "Basic Electrical Engineering Laboratory", "Electronic Devices and Circuits Laboratory"],
