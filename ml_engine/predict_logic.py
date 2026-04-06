@@ -21,15 +21,6 @@ PILLARS = {
 }
 
 BRANCH_SYLLABUS = {
-    "ECE": {
-        "Sem 1": ["Matrices and Calculus", "Applied Physics", "Programming for Problem Solving", "Engineering Workshop", "English for Skill Enhancement", "Elements of Electronics and Communication Engineering", "Applied Physics Laboratory", "English Language and Communication Skills Laboratory", "Programming for Problem Solving Laboratory", "Induction Programme"],
-        "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Engineering Chemistry", "Computer Aided Engineering Graphics", "Basic Electrical Engineering", "Electronic Devices and Circuits", "Applied Python Programming Laboratory", "Engineering Chemistry Laboratory", "Basic Electrical Engineering Laboratory", "Electronic Devices and Circuits Laboratory"],
-        "Sem 3": ["Analog Circuits", "Network analysis and Synthesis", "Digital Logic Design", "Signals and Systems", "Probability Theory and Stochastic Processes", "Analog Circuits Laboratory", "Digital logic Design Laboratory", "Basic Simulation Laboratory", "Constitution of India"],
-        "Sem 4": ["Numerical Methods and Complex Variables", "Electromagnetic Fields and Transmission Lines", "Analog and Digital Communications", "Linear and Digital IC Applications", "Electronic Circuit Analysis", "Analog and Digital Communications Laboratory", "Linear and Digital IC Applications Laboratory", "Electronic Circuit Analysis Laboratory", "Real Time Project/ Field Based Project", "Gender Sensitization Lab"],
-        "Sem 5": ["Microcontrollers and Applications", "IoT Architectures and Protocols", "Control Systems", "Antennas and Wave Propagation", "Professional Elective – I", "Microcontrollers Laboratory", "IoT Architectures and Protocols Laboratory", "Advanced Communication Laboratory", "Environmental Science"],
-        "Sem 6": ["Digital Signal Processing", "CMOS VLSI Design", "Business Economics & Financial Analysis", "Professional Elective – II", "Open Elective – I", "Digital Signal Processing Laboratory", "CMOS VLSI Design Laboratory", "Advanced English Communication Skills Laboratory", "Intellectual Property Rights", "Industry Oriented Mini Project/ Internship"],
-        "Sem 7": ["Microwave and Optical Communications", "Professional Elective – III", "Professional Elective – IV", "Open Elective – II", "Professional Practice, Law & Ethics", "Microwave and Optical Communications Laboratory", "Project Stage – I"]
-    },
     "Mechanical": {
         "Sem 1": ["Mathematics - I", "Engineering Physics", "Programming for Problem Solving", "Engineering Graphics", "Engineering Physics Lab", "Programming for Problem Solving Lab", "Environmental Science", "Induction Programme"],
         "Sem 2": ["Mathematics - II", "Chemistry", "Engineering Mechanics", "Engineering Workshop", "English", "Engineering Chemistry Lab", "English Language and Communication Skills Lab"],
