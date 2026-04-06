@@ -20,9 +20,6 @@ PILLARS = {
     'civil_core': ['surveying', 'concrete', 'structural', 'geotechnical', 'transportation', 'hydrology', 'foundation']
 }
 
-BRANCH_SYLLABUS = {
-}
-
 ROADMAPS = {
     'Full Stack Web Engineer (MERN/Next.js)': [
         "Phase 0: Web Fundamentals & Version Control\n    - HTTP/HTTPS protocols, DNS, and how browsers render HTML/CSS\n    - Git Mastery: Branching, Merging, Rebasing, and GitHub Actions basics\n    - Milestone: Static Web – Deploy a multi-page site using only HTML/CSS and Netlify",
