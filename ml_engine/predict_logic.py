@@ -21,15 +21,6 @@ PILLARS = {
 }
 
 BRANCH_SYLLABUS = {
-    "Civil": {
-        "Sem 1": ["Matrices and Calculus", "Applied Physics", "Programming for Problem Solving", "Engineering Workshop", "English for Skill Enhancement", "Elements of Civil Engineering", "Applied Physics Laboratory", "English Language and Communication Skills Laboratory", "Programming for Problem Solving Laboratory", "Induction Programme"],
-        "Sem 2": ["Ordinary Differential Equations and Vector Calculus", "Engineering Chemistry", "Computer Aided Engineering Graphics", "Applied Mechanics", "Surveying", "Python Programming Laboratory", "Engineering Chemistry Laboratory", "Surveying Laboratory – I"],
-        "Sem 3": ["Probability and Statistics", "Building Materials, Construction and Planning", "Engineering Geology", "Strength of Materials – I", "Fluid Mechanics", "Surveying Laboratory – II", "Strength of Materials Laboratory", "Computer Aided Drafting Laboratory", "Constitution of India"],
-        "Sem 4": ["Basic Electrical and Electronics Engineering", "Concrete Technology", "Strength of Materials – II", "Hydraulics and Hydraulics Machinery", "Structural Analysis – I", "Fluid Mechanics and Hydraulics Machinery Laboratory", "Basic Electrical and Electronics Engineering Laboratory", "Concrete Technology Laboratory", "Real-time Research Project/ Field-Based Project", "Gender Sensitization Laboratory"],
-        "Sem 5": ["Structural Analysis – II", "Geotechnical Engineering", "Structural Engineering – I (RCC)", "Business Economics & Financial Analysis", "Transportation Engineering", "Hydrology and Water Resources Engineering", "Transportation Engineering Laboratory", "Geotechnical Engineering Laboratory", "Intellectual Property Rights"],
-        "Sem 6": ["Environmental Engineering", "Foundation Engineering", "Structural Engineering – II (Steel Structures)", "Professional Elective – I", "Open Elective – I", "Environmental Engineering Laboratory", "Computer Aided Design Laboratory", "Advanced English Communication Skills Laboratory", "Industry Oriented Mini Project/ Internship", "Environmental Science"],
-        "Sem 7": ["Quantity Survey & Valuation", "Project Management", "Professional Elective – II", "Professional Elective – III", "Professional Elective – IV", "Open Elective – II", "Civil Engineering Software Laboratory", "Project Stage – I"]
-    }
 }
 
 ROADMAPS = {
