@@ -34,3 +34,16 @@ Scikit-Learn (Random Forest Model)
 Pandas & NumPy (Data Processing)
 
 Flask-CORS (Cross-Origin Resource Sharing)
+
+
+📁 Project Structure
+
+Career_Navigator/
+├── frontend/                # React.js application
+│   ├── src/
+│   │   ├── components/      # UI Components (GradeForm, etc.)
+│   │   └── App.jsx          # Main application logic
+├── backend/                 # Flask API
+│   ├── predict_logic.py     # ML Prediction & Pillar Logic
+│   └── career_model.pkl     # Trained Random Forest Model
+└── README.md
