@@ -11,3 +11,26 @@ Skill Proficiency Dashboard: Visualizes strengths in areas like Coding, Systems,
 Actionable Roadmaps: Generates a structured 4-phase plan for the predicted role.
 
 PDF Export: Students can download their personalized career guide for offline use.
+
+
+🛠️ Tech Stack
+
+Frontend:
+
+React.js (Functional Components & Hooks)
+
+Axios (API Communication)
+
+jsPDF (Document Generation)
+
+CSS3 (Modern Dark-themed UI)
+
+Backend:
+
+Python (Flask)
+
+Scikit-Learn (Random Forest Model)
+
+Pandas & NumPy (Data Processing)
+
+Flask-CORS (Cross-Origin Resource Sharing)
