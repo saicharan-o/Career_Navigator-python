@@ -47,3 +47,27 @@ Career_Navigator/
 │   ├── predict_logic.py     # ML Prediction & Pillar Logic
 │   └── career_model.pkl     # Trained Random Forest Model
 └── README.md
+
+
+⚙️ Installation & Setup
+
+1. Backend Setup
+
+# Navigate to backend folder
+cd backend
+
+# Install dependencies
+pip install flask flask-cors pandas scikit-learn
+
+# Run the Flask server
+python predict_logic.py
+2. Frontend Setup
+
+# Navigate to frontend folder
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start the React development server
+npm run dev
