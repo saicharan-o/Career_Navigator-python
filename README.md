@@ -88,3 +88,5 @@ Inference: The model predicts a role (e.g., Data Scientist, Full Stack Developer
 ![Career Navigator Dashboard](<Screenshot 2026-03-28 013321.png>)
 
 ![Core Subject Grade Entry Interface](<Screenshot 2026-03-28 013506.png>)
+
+![ Practical Laboratory Grade Entry Form ](<Screenshot 2026-03-28 013537.png>)
