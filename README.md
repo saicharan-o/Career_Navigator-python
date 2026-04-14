@@ -83,3 +83,4 @@ Machine Learning: The Random Forest Classifier analyzes the average score of eac
 Inference: The model predicts a role (e.g., Data Scientist, Full Stack Developer) based on the highest-weighted skill clusters.
 
 
+![Career Navigator Dashboard](<Screenshot 2026-03-28 013321.png>)
