@@ -55,7 +55,11 @@ Career_Navigator/
 
 ⚙️ Installation & Setup
 
+
+
 1. Backend Setup
+
+
 
 # Navigate to backend folder
 cd backend
