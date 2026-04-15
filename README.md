@@ -73,8 +73,10 @@ pip install flask flask-cors pandas scikit-learn
 python predict_logic.py
 2. Frontend Setup
 
+
 # Navigate to frontend folder
 cd frontend
+
 
 # Install dependencies
 npm install
