@@ -38,6 +38,7 @@ Pandas & NumPy (Data Processing)
 Flask-CORS (Cross-Origin Resource Sharing)
 
 
+
 📁 Project Structure
 
 Career_Navigator/
@@ -49,6 +50,7 @@ Career_Navigator/
 │   ├── predict_logic.py     # ML Prediction & Pillar Logic
 │   └── career_model.pkl     # Trained Random Forest Model
 └── README.md
+
 
 
 ⚙️ Installation & Setup
