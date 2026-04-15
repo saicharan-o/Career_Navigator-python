@@ -81,8 +81,11 @@ cd frontend
 # Install dependencies
 npm install
 
+
 # Start the React development server
 npm run dev
+
+
 
 🧠 How It Works (The Logic)
 
