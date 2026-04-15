@@ -64,8 +64,10 @@ Career_Navigator/
 # Navigate to backend folder
 cd backend
 
+
 # Install dependencies
 pip install flask flask-cors pandas scikit-learn
+
 
 # Run the Flask server
 python predict_logic.py
