@@ -102,18 +102,18 @@ Inference: The model predicts a role (e.g., Data Scientist, Full Stack Developer
 
 <h1>OUTPUT</h1>
 
-![ Specialization and Semester Selection Interface](<Screenshot 2026-03-28 013321.png>)
+![Specialization and Semester Selection Interface](<Screenshot 2026-03-28 013321.png>)
 
 ![Core Subject Grade Entry Interface](<Screenshot 2026-03-28 013506.png>)
 
-![ Practical Laboratory Grade Entry Form ](<Screenshot 2026-03-28 013537.png>)
+![Practical Laboratory Grade Entry Form ](<Screenshot 2026-03-28 013537.png>)
 
-![ Additional Laboratory and Workshop Entry](<Screenshot 2026-03-28 013548.png>)
+![Additional Laboratory and Workshop Entry](<Screenshot 2026-03-28 013548.png>)
 
 ![Final Transcript Submission and API Trigger ](<Screenshot 2026-03-28 013602.png>)
 
 ![AI-Predicted Career Role and Skill Proficiency Dashboard](<Screenshot 2026-03-28 013617.png>)
 
-![ Actionable Phase-Wise Career Guidance Roadmap (Phases 0-2)](<Screenshot 2026-03-28 013632.png>)
+![Actionable Phase-Wise Career Guidance Roadmap (Phases 0-2)](<Screenshot 2026-03-28 013632.png>)
 
 ![Advanced Roadmap Milestones and PDF Export Interface](<Screenshot 2026-03-28 013640.png>)
