@@ -5,6 +5,7 @@ Career Navigator is an AI-powered academic analytics platform designed to help e
 
 
 🚀 Key Features
+
 Dynamic Grade Entry: Interactive UI that adapts to different engineering branches (CSE, AI-ML, etc.) and academic years.
 
 AI-Driven Prediction: Uses Machine Learning to map 50+ subjects into 9 core "Technical Pillars."
@@ -60,7 +61,6 @@ Career_Navigator/
 
 
 1. Backend Setup
-
 
 
 # Navigate to backend folder
