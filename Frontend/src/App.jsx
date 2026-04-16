@@ -81,6 +81,7 @@ const BRANCH_SYLLABUS = {
 }
 
 function App() {
+  
   const [step, setStep] = useState(1);
   const [branch, setBranch] = useState("CSE AI-ML");
   const [currentYear, setCurrentYear] = useState("4-2"); 
@@ -306,6 +307,7 @@ const handleGradeSubmit = async (grades) => {
     </div>
   );
 }
+
 const selectStyle = { width: '100%', padding: '15px', background: '#050505', color: '#fff', border: '1px solid #333', borderRadius: '8px', marginBottom: '20px' };
 const buttonStyle = { width: '100%', padding: '18px', background: '#ff4d4d', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', letterSpacing: '2px' };
 
