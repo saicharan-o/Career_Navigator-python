@@ -73,6 +73,8 @@ pip install flask flask-cors pandas scikit-learn
 
 # Run the Flask server
 python predict_logic.py
+
+
 2. Frontend Setup
 
 
