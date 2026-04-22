@@ -42,18 +42,38 @@ Flask-CORS (Cross-Origin Resource Sharing)
 
 
 
-📁 Project Structure
+## 📁 Project Structure
 
+
+```
 Career_Navigator/
-├── frontend/                # React.js application
+├── frontend/
+│   ├── public/
+│   │   └── index.html
 │   ├── src/
-│   │   ├── components/      # UI Components (GradeForm, etc.)
-│   │   └── App.jsx          # Main application logic
-├── backend/                 # Flask API
-│   ├── predict_logic.py     # ML Prediction & Pillar Logic
-│   └── career_model.pkl     # Trained Random Forest Model
+│   │   ├── components/
+│   │   │   └── GradeForm.js
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.js
+│   │   └── index.css
+│   ├── package.json
+│   └── package-lock.json
+│
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   └── package-lock.json
+│
+├── ml_engine/
+│   ├── predict_logic.py
+│   ├── model/
+│   │   └── career_model.pkl
+│   └── requirements.txt
+│
+├── .gitignore
 └── README.md
-
+```
 
 
 ⚙️ Installation & Setup
