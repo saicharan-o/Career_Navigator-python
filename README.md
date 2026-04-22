@@ -111,7 +111,7 @@ npm run dev
 
 
 
-🧠 How It Works (The Logic)
+# 🧠 How It Works (The Logic)
 
 
 Data Ingestion: The user selects their branch and inputs grades for completed semesters.
