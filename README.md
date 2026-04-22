@@ -18,7 +18,7 @@ PDF Export: Students can download their personalized career guide for offline us
 
 
 
-🛠️ Tech Stack
+# 🛠️ Tech Stack
 
 Frontend:
 
