@@ -20,7 +20,7 @@ PDF Export: Students can download their personalized career guide for offline us
 
 # 🛠️ Tech Stack
 
-Frontend:
+## Frontend:
 
 React.js (Functional Components & Hooks)
 
@@ -30,7 +30,7 @@ jsPDF (Document Generation)
 
 CSS3 (Modern Dark-themed UI)
 
-Backend:
+## Backend:
 
 Python (Flask)
 
