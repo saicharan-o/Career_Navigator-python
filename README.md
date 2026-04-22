@@ -124,7 +124,7 @@ Inference: The model predicts a role (e.g., Data Scientist, Full Stack Developer
 
 
 
-<h1>OUTPUT</h1>
+# <h1>OUTPUT</h1>
 
 ![Specialization and Semester Selection Interface](<Screenshot 2026-03-28 013321.png>)
 
