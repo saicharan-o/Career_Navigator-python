@@ -188,14 +188,17 @@ def predict_career(user_data):
     }
 
 @app.route('/predict', methods=['POST', 'OPTIONS'])
+
 def predict():
     if request.method == 'OPTIONS':
         return jsonify({"status": "ok"}), 200
+    
     try:
         user_data = request.json
         print(f"Analyzing data for: {user_data.get('branch')}")
         result = predict_career(user_data)
         return jsonify(result)
+    
     except Exception as e:
         print(f"Error: {str(e)}")
         return jsonify({"error": str(e)}), 500
