@@ -27,7 +27,8 @@ app.post('/api/predict', (req, res) => {
         try {
             const parsedResult = JSON.parse(resultData.trim());
             res.json(parsedResult);
-        } catch (e) {
+        } 
+        catch (e) {
             console.error("JSON Parse Error:", e);
             res.status(500).json({ error: "Failed to parse Python output" });
         }
