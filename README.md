@@ -4,7 +4,9 @@
 Career Navigator is an AI-powered academic analytics platform designed to help engineering students bridge the gap between university grades and professional career paths. By analyzing semester-wise performance through a Random Forest Classifier, the system predicts the most suitable career role and generates a customized, phase-wise roadmap for placement preparation.
 
 # 🎯 Problem Statement
+
 Engineering students often struggle to translate their academic performance into clear career direction and actionable preparation strategies. Existing guidance systems are generic and do not leverage individual academic data to provide personalized recommendations. This project addresses the problem by building a machine learning–driven platform that analyzes semester-wise performance and predicts suitable career roles, along with a structured, phase-wise roadmap for targeted skill development.
+
 # 🚀 Key Features
 
 Dynamic Grade Entry: Interactive UI that adapts to different engineering branches (CSE, AI-ML, etc.) and academic years.
