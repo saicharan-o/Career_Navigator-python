@@ -152,9 +152,11 @@ const handleGradeSubmit = async (grades) => {
             setResults(response.data); 
             setStep(3); 
         }
-    } catch (error) {
+    } 
+    catch (error) {
         setMessage("❌ AI System Offline. Please ensure the Python server is running.");
-    } finally {
+    } 
+    finally {
         setLoading(false);
     }
 };
